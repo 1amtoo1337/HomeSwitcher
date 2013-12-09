@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "TestFlight.h"
 #import "MasterViewController.h"
 
 @implementation AppDelegate
@@ -18,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [TestFlight takeOff:@"0c4fda43daf317029f6a04d4e88a2818_OTg5ODM1MjAxMy0wNC0xNCAxMToxMTozNy4wMDMwNDc"];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;

@@ -26,6 +26,8 @@
 		100CD4D3185642EB00995D4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 100CD4AB185642EA00995D4B /* CoreData.framework */; };
 		100CD4DB185642EB00995D4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 100CD4D9185642EB00995D4B /* InfoPlist.strings */; };
 		100CD4DD185642EB00995D4B /* HomeSwitcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD4DC185642EB00995D4B /* HomeSwitcherTests.m */; };
+		100CD4EB185659F700995D4B /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100CD4E7185659F700995D4B /* libTestFlight.a */; };
+		100CD4ED18565A2B00995D4B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 100CD4EC18565A2B00995D4B /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,11 @@
 		100CD4D8185642EB00995D4B /* HomeSwitcherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomeSwitcherTests-Info.plist"; sourceTree = "<group>"; };
 		100CD4DA185642EB00995D4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		100CD4DC185642EB00995D4B /* HomeSwitcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSwitcherTests.m; sourceTree = "<group>"; };
+		100CD4E7185659F700995D4B /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		100CD4E8185659F700995D4B /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		100CD4E9185659F700995D4B /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		100CD4EA185659F700995D4B /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		100CD4EC18565A2B00995D4B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				100CD4ED18565A2B00995D4B /* libz.dylib in Frameworks */,
+				100CD4EB185659F700995D4B /* libTestFlight.a in Frameworks */,
 				100CD4A8185642EA00995D4B /* CoreGraphics.framework in Frameworks */,
 				100CD4AC185642EA00995D4B /* CoreData.framework in Frameworks */,
 				100CD4AA185642EA00995D4B /* UIKit.framework in Frameworks */,
@@ -113,6 +122,7 @@
 		100CD4A4185642EA00995D4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				100CD4EC18565A2B00995D4B /* libz.dylib */,
 				100CD4A5185642EA00995D4B /* Foundation.framework */,
 				100CD4A7185642EA00995D4B /* CoreGraphics.framework */,
 				100CD4A9185642EA00995D4B /* UIKit.framework */,
@@ -125,6 +135,7 @@
 		100CD4AD185642EA00995D4B /* HomeSwitcher */ = {
 			isa = PBXGroup;
 			children = (
+				100CD4E6185659DE00995D4B /* TestFlight */,
 				100CD4B6185642EA00995D4B /* AppDelegate.h */,
 				100CD4B7185642EB00995D4B /* AppDelegate.m */,
 				100CD4B9185642EB00995D4B /* Main_iPhone.storyboard */,
@@ -167,6 +178,17 @@
 				100CD4D9185642EB00995D4B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		100CD4E6185659DE00995D4B /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				100CD4E7185659F700995D4B /* libTestFlight.a */,
+				100CD4E8185659F700995D4B /* TestFlight.h */,
+				100CD4E9185659F700995D4B /* TestFlight+AsyncLogging.h */,
+				100CD4EA185659F700995D4B /* TestFlight+ManualSessions.h */,
+			);
+			name = TestFlight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,6 +433,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomeSwitcher/HomeSwitcher-Prefix.pch";
 				INFOPLIST_FILE = "HomeSwitcher/HomeSwitcher-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/allanadjei/Dropbox/de.acheampong.dev.excode/ios7/Projects/HomeSwitcher/HomeSwitcher,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -424,6 +450,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomeSwitcher/HomeSwitcher-Prefix.pch";
 				INFOPLIST_FILE = "HomeSwitcher/HomeSwitcher-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/allanadjei/Dropbox/de.acheampong.dev.excode/ios7/Projects/HomeSwitcher/HomeSwitcher,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
