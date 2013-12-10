@@ -19,22 +19,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [TestFlight takeOff:@"0c4fda43daf317029f6a04d4e88a2818_OTg5ODM1MjAxMy0wNC0xNCAxMToxMTozNy4wMDMwNDc"];
+    [TestFlight takeOff:@"c92955f6-7ae8-4057-9a97-3f357eca907e"];
     
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-        
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    }
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+//        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+//        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+//        splitViewController.delegate = (id)navigationController.topViewController;
+//        
+//        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
+//        MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
+//        controller.managedObjectContext = self.managedObjectContext;
+//    } else {
+//        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//        MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
+//        controller.managedObjectContext = self.managedObjectContext;
+//    }
     return YES;
 }
 							
