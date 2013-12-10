@@ -7,6 +7,10 @@
 //
 
 #import "AddRoomViewController.h"
+#import "InputCell.h"
+#import "Room.h"
+#import "Outlet.h"
+#import "Command.h"
 
 @interface AddRoomViewController ()
 
@@ -52,6 +56,11 @@
     
     //self.numberOfOutlets = 2;
     
+    
+    //core data
+    //managedObjectContext reference
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = delegate.managedObjectContext;
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,7 +97,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    InputCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     switch (indexPath.section) {
@@ -96,10 +105,10 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.textLabel.text = @"Name:";
-                    UITextField *txtField = [[UITextField alloc] initWithFrame:CGRectMake(80, 5, 80, 30)];
-                    txtField.borderStyle = UITextBorderStyleLine;
-                    [cell addSubview:txtField];
+                    cell.nameLabel.text = @"Name:";
+                    cell.textField.delegate = self;
+                    cell.textField.tag = 11;
+                    
                 }
                     break;
                     
@@ -112,28 +121,25 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.textLabel.text = @"Name:";
-                    UITextField *txtField = [[UITextField alloc] initWithFrame:CGRectMake(80, 5, 80, 30)];
-                    txtField.borderStyle = UITextBorderStyleLine;
-                    [cell addSubview:txtField];
+                    cell.nameLabel.text = @"Name:";
+                    cell.textField.delegate = self;
+                    cell.textField.tag = 12;
                 }
                     break;
                     
                 case 1:
                 {
-                    cell.textLabel.text = @"'ON' command:";
-                    UITextField *txtField = [[UITextField alloc] initWithFrame:CGRectMake(160, 5, 80, 30)];
-                    txtField.borderStyle = UITextBorderStyleLine;
-                    [cell addSubview:txtField];
+                    cell.nameLabel.text = @"'ON' command:";
+                    cell.textField.delegate = self;
+                    cell.textField.tag = 13;
                 }
                     break;
                     
                 case 2:
                 {
-                    cell.textLabel.text = @"'OFF' command:";
-                    UITextField *txtField = [[UITextField alloc] initWithFrame:CGRectMake(160, 5, 80, 30)];
-                    txtField.borderStyle = UITextBorderStyleLine;
-                    [cell addSubview:txtField];
+                    cell.nameLabel.text = @"'OFF' command:";
+                    cell.textField.delegate = self;
+                    cell.textField.tag = 14;
                 }
                     break;
                     
@@ -148,6 +154,74 @@
     //cell.textLabel.text = @"Add some stuff";
     
     return cell;
+}
+
+-(void)addRoomTest
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    Room *room = [NSEntityDescription
+                  insertNewObjectForEntityForName:@"Room"
+                  inManagedObjectContext:context];
+    [room setValue:@"Schlafzimmer" forKey:@"name"];
+    
+    Outlet *outlet = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Outlet"
+                      inManagedObjectContext:context];
+    outlet.name = @"Stehlampe";
+    outlet.state = 0;
+    outlet.room = room;
+    
+    
+    Command *command = [NSEntityDescription
+                        insertNewObjectForEntityForName:@"Command"
+                        inManagedObjectContext:context];
+    command.on = @"C/ONN";
+    command.off = @"C/OFF";
+    command.outlet = outlet;
+    outlet.command = command;
+    
+    Outlet *outlet1 = [NSEntityDescription
+                       insertNewObjectForEntityForName:@"Outlet"
+                       inManagedObjectContext:context];
+    outlet1.name = @"Stehlampe1";
+    outlet1.state = 0;
+    outlet1.room = room;
+    
+    
+    Command *command1 = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Command"
+                         inManagedObjectContext:context];
+    command1.on = @"C/ONN";
+    command1.off = @"C/OFF";
+    command1.outlet = outlet1;
+    outlet1.command = command1;
+    
+    
+    [room.outlets setByAddingObjectsFromArray:@[outlet, outlet1]];
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+}
+
+#pragma mark - UITextField Delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if(textField.tag == 11) NSLog(@"first text");
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+
 }
 
 /*
@@ -201,12 +275,101 @@
 
  */
 
--(void)validateInput
+- (IBAction)validateInput:(UIBarButtonItem *)sender
 {
+    NSString *roomName = ((UITextField*)[self.view viewWithTag:11]).text;
+    NSString *outletName = ((UITextField*)[self.view viewWithTag:12]).text;
+    NSString *outletOn = ((UITextField*)[self.view viewWithTag:13]).text;
+    NSString *outletOff = ((UITextField*)[self.view viewWithTag:14]).text;
+    
+    //this fuction needs to trigger a delegate method that reloads the listView tableView
+    if([roomName isEqualToString:@""] || [outletName isEqualToString:@""] || [outletOn isEqualToString:@""] || [outletOff isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:@"Not all fields were entered" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+        
+    }else if(![roomName isEqualToString:@""] && ![outletName isEqualToString:@""] && ![outletOn isEqualToString:@""] && ![outletOff isEqualToString:@""])
+    {
+        [self saveData];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
     
 }
+
+-(void)saveData
+{
+    NSString *roomName = ((UITextField*)[self.view viewWithTag:11]).text;
+    NSString *outletName = ((UITextField*)[self.view viewWithTag:12]).text;
+    NSString *outletOn = ((UITextField*)[self.view viewWithTag:13]).text;
+    NSString *outletOff = ((UITextField*)[self.view viewWithTag:14]).text;
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    Room *room = [NSEntityDescription
+                  insertNewObjectForEntityForName:@"Room"
+                  inManagedObjectContext:context];
+    [room setValue:roomName forKey:@"name"];
+    
+    Outlet *outlet = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Outlet"
+                      inManagedObjectContext:context];
+    outlet.name = outletName;
+    outlet.state = 0;
+    outlet.room = room;
+    
+    
+    Command *command = [NSEntityDescription
+                        insertNewObjectForEntityForName:@"Command"
+                        inManagedObjectContext:context];
+    command.on = outletOn;
+    command.off = outletOff;
+    command.outlet = outlet;
+    outlet.command = command;
+
+    [room.outlets setByAddingObjectsFromArray:@[outlet]];
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+}
+
+
 - (IBAction)dismissAddView:(UIBarButtonItem *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSString *text = ((UITextField*)[self.view viewWithTag:11]).text;
+    NSString *text1 = ((UITextField*)[self.view viewWithTag:12]).text;
+    NSString *text2 = ((UITextField*)[self.view viewWithTag:13]).text;
+    NSString *text3 = ((UITextField*)[self.view viewWithTag:14]).text;
+    
+    /*
+     
+     if any of the fields have text ask the user
+     
+     if there is no text dismiss view
+     */
+    if(![text isEqualToString:@""] || ![text1 isEqualToString:@""] || ![text2 isEqualToString:@""] || ![text3 isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cancel" message:@"Are you sure you want to cancel?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok" , nil];
+        [alert show];
+        
+    }else if([text isEqualToString:@""] || [text1 isEqualToString:@""] || [text2 isEqualToString:@""] || [text3 isEqualToString:@""])
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+
+    }
+}
+
+- (void)alertView:(UIAlertView *)alert clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        NSLog(@"cancel");
+    } else if (buttonIndex == 1)
+    {
+        NSLog(@"ok");
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refresh" object:self];
+    }
 }
 @end

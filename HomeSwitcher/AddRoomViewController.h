@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddRoomViewController : UITableViewController
+@interface AddRoomViewController : UITableViewController<NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+- (IBAction)validateInput:(UIBarButtonItem *)sender;
 - (IBAction)dismissAddView:(UIBarButtonItem *)sender;
 @end

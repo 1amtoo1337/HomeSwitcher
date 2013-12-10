@@ -54,7 +54,7 @@
     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = delegate.managedObjectContext;
     
-    [self addRoomTest];
+    //[self addRoomTest];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
@@ -62,7 +62,6 @@
     NSError *error;
     //add results to array
     self.rooms = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
     
 }
 

@@ -7,8 +7,11 @@
 //
 
 #import "OutletViewController.h"
+#include "Outlet.h"
 
 @interface OutletViewController ()
+
+@property (strong, nonatomic) NSArray *outlets;
 
 @end
 
@@ -51,6 +54,9 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ssdfs" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    //nsset -> array
+    self.outlets = [self.room.outlets allObjects];
 
 }
 
@@ -77,7 +83,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.room.outlets.count;
+    return self.outlets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,6 +93,9 @@
 
     
     // Configure the cell...
+    Outlet *outlet = [self.outlets objectAtIndex:indexPath.row];
+    cell.textLabel.text = outlet.name;
+
     
     
     return cell;
