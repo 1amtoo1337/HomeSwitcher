@@ -88,8 +88,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if(section == 0) return 1;
-    if(section == 1) return 3 + self.numberOfOutlets;
+    if(section == 0) return 2;
+    if(section == 1) return 0 + self.numberOfOutlets;
     
     return 1;
 }
@@ -108,9 +108,21 @@
                     cell.nameLabel.text = @"Name:";
                     cell.textField.delegate = self;
                     cell.textField.tag = 11;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
                     
                 }
                     break;
+                    
+                case 1:
+                {
+                    cell.nameLabel.text = @"Add Outlet";
+                    [cell.textField setHidden:YES];
+                    UIImageView *plus = [[UIImageView alloc] initWithFrame:CGRectMake(270, 5, 30, 30)];
+                    plus.image = [UIImage imageNamed:@"plus_add_green.png"];
+                    [cell addSubview:plus];
+                    //cell.textField.tag = 12;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                     
                 default:
                     break;
@@ -121,9 +133,8 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.nameLabel.text = @"Name:";
-                    cell.textField.delegate = self;
-                    cell.textField.tag = 12;
+                    cell.nameLabel.text = @"Outlet1";
+                    cell.textField.hidden = YES;
                 }
                     break;
                     
@@ -206,6 +217,20 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger section = indexPath.section;
+    NSUInteger row = indexPath.row;
+    
+    if(section == 0 && row == 1) NSLog(@"Add");
+}
+
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) return nil;
+    
+    return indexPath;
+}
 #pragma mark - UITextField Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
