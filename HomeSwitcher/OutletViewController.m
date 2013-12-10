@@ -7,6 +7,7 @@
 //
 
 #import "OutletViewController.h"
+#import "LightSwitchCell.h"
 #include "Outlet.h"
 
 @interface OutletViewController ()
@@ -89,12 +90,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    LightSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     
     // Configure the cell...
     Outlet *outlet = [self.outlets objectAtIndex:indexPath.row];
-    cell.textLabel.text = outlet.name;
+    cell.outletName.text = outlet.name;
 
     
     

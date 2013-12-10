@@ -33,6 +33,7 @@
 		100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD4FD1856703000995D4B /* AddRoomViewController.m */; };
 		100CD50418567EE600995D4B /* OutletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD50318567EE600995D4B /* OutletViewController.m */; };
 		109E31DE1856C7E900882DE8 /* InputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31DD1856C7E900882DE8 /* InputCell.m */; };
+		109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E01856DA5400882DE8 /* LightSwitchCell.m */; };
 		10A1DC801856BE5D00D2AB3A /* Outlet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A1DC7F1856BE5D00D2AB3A /* Outlet.m */; };
 		10A1DC831856BE5E00D2AB3A /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A1DC821856BE5E00D2AB3A /* Command.m */; };
 		10A1DC861856BE5E00D2AB3A /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A1DC851856BE5E00D2AB3A /* Room.m */; };
@@ -87,6 +88,8 @@
 		100CD50318567EE600995D4B /* OutletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutletViewController.m; sourceTree = "<group>"; };
 		109E31DC1856C7E900882DE8 /* InputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell.h; sourceTree = "<group>"; };
 		109E31DD1856C7E900882DE8 /* InputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell.m; sourceTree = "<group>"; };
+		109E31DF1856DA5400882DE8 /* LightSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightSwitchCell.h; sourceTree = "<group>"; };
+		109E31E01856DA5400882DE8 /* LightSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightSwitchCell.m; sourceTree = "<group>"; };
 		10A1DC7E1856BE5D00D2AB3A /* Outlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outlet.h; sourceTree = "<group>"; };
 		10A1DC7F1856BE5D00D2AB3A /* Outlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outlet.m; sourceTree = "<group>"; };
 		10A1DC811856BE5E00D2AB3A /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 				100CD50318567EE600995D4B /* OutletViewController.m */,
 				109E31DC1856C7E900882DE8 /* InputCell.h */,
 				109E31DD1856C7E900882DE8 /* InputCell.m */,
+				109E31DF1856DA5400882DE8 /* LightSwitchCell.h */,
+				109E31E01856DA5400882DE8 /* LightSwitchCell.m */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				10A1DC831856BE5E00D2AB3A /* Command.m in Sources */,
 				100CD4B4185642EA00995D4B /* main.m in Sources */,
 				100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */,
+				109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
