@@ -38,13 +38,14 @@
     [workaroundImageView addSubview:navigationImage];
     self.navigationItem.titleView = workaroundImageView;
     
-    //set back button title
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ssdfs" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
     //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     //nsset -> array
     self.outlets = [self.room.outlets allObjects];
+    
+    //core data
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = delegate.managedObjectContext;
 
 }
 
@@ -90,16 +91,15 @@
     return cell;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
-}
-*/
 
-/*
+}
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -111,34 +111,53 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)addOutletToRoom:(UIBarButtonItem *)sender {
 }
 
- */
+-(void)didSelectWith:(AddOutletViewController *)controller outlet:(NSArray *)outlet
+{
+ 
+    NSManagedObjectContext *context = [self managedObjectContext];
+
+    Outlet *tOutlet =[NSEntityDescription
+                      insertNewObjectForEntityForName:@"Outlet"
+                      inManagedObjectContext:context];
+    tOutlet.name = [outlet objectAtIndex:0];
+    tOutlet.state = 0;
+    tOutlet.room = self.room;
+    
+    Command *tCommand = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Command"
+                         inManagedObjectContext:context];
+    tCommand.on = [outlet objectAtIndex:1];
+    tCommand.off = [outlet objectAtIndex:2];
+    tCommand.outlet = tOutlet;
+    tOutlet.command = tCommand;
+    
+    [self.room addOutletsObject:tOutlet];
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    //reload the current room from core data into the self.room
+    
+    [self.tableView reloadData];
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"outletViewToOutletAddSegue"])
+    {
+        AddOutletViewController *vc = [segue destinationViewController];
+        vc.delegate = self;
+    }
+}
+
 
 @end

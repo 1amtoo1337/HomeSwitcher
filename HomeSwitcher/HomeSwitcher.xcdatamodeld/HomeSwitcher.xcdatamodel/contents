@@ -15,9 +15,18 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="outlets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Outlet" inverseName="room" inverseEntity="Outlet" syncable="YES"/>
     </entity>
+    <entity name="Settings" representedClassName="Settings" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverIP" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverPort" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webserverIndexPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webserverIP" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webserverPort" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Command" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Outlet" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Room" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Settings" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

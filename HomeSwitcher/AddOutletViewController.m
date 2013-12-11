@@ -171,7 +171,8 @@
         
     }else if(self.textEntered == NO)
     {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+         //popToRootViewControllerAnimated:YES];
     }
 }
 
@@ -218,7 +219,7 @@
         NSArray *myOutlet = [NSArray arrayWithObjects:outletName, commandOn, commandOff, nil];
         [self.delegate didSelectWith:self outlet:myOutlet];
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
 }

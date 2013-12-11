@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddOutletViewController.h"
 #import "Room.h"
 
-@interface OutletViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface OutletViewController : UITableViewController<NSFetchedResultsControllerDelegate, AddOutletDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) Room *room;
+
+- (IBAction)addOutletToRoom:(UIBarButtonItem *)sender;
 
 @end
