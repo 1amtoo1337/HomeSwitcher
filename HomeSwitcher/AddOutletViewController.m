@@ -7,13 +7,12 @@
 //
 
 #import "AddOutletViewController.h"
-#import "InputCell.h"
-#import "Outlet.h"
+#import "OutletInputCell.h"
+
 
 @interface AddOutletViewController ()
 
 @property (strong,nonatomic) NSArray *array;
-@property (strong, nonatomic) Outlet *outlet;
 
 @end
 
@@ -32,17 +31,8 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    //custom barButtonItem
+    //hide backButton
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    
-//    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(showAlertView:)];
-//    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     
     self.array = [[NSArray alloc] initWithObjects:@"Name:",@"Command ON:", @"Command OFF:", nil];
     
@@ -58,7 +48,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -69,27 +58,24 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return self.array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
-    cell.textLabel.text = [self.array objectAtIndex:indexPath.row];
-    UITextField *txtField = [[UITextField alloc] initWithFrame:CGRectMake(200, 5, 80, 38)];
-    txtField.borderStyle = UITextBorderStyleLine;
-    txtField.delegate = self;
-    [cell addSubview:txtField];
+    OutletInputCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    cell.outletNameLabel.text = [self.array objectAtIndex:indexPath.row];
+    cell.outletNameLabel.font = [UIFont fontWithName:@"Avenir" size:16]; //#task#
+    cell.outletTextField.tag = indexPath.row + 100;
+    cell.outletTextField.delegate = self;
+    cell.outletTextField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
     
     return cell;
 }
@@ -99,7 +85,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if(textField.tag == 11) NSLog(@"first text");
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -133,56 +119,6 @@
 
     }
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 - (IBAction)cancelOutletEntry:(UIBarButtonItem *)sender
 {
@@ -192,7 +128,39 @@
 
 - (IBAction)saveOutlet:(UIBarButtonItem *)sender
 {
+    
+    NSString *outletName = ((UITextField*)[self.view viewWithTag:100]).text;
+    NSString *commandOn = ((UITextField*)[self.view viewWithTag:101]).text;
+    NSString *commandOff = ((UITextField*)[self.view viewWithTag:102]).text;
+    
+    //this fuction needs to trigger a delegate method that reloads the listView tableView
+    if([outletName isEqualToString:@""] || [commandOn isEqualToString:@""] || [commandOff isEqualToString:@""])
+    {
+        //not all fields were entered
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:@"Not all fields were entered" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+        
+    }else if(![outletName isEqualToString:@""] && ![commandOn isEqualToString:@""] && ![commandOff isEqualToString:@""])
+    {
+
+        /*
+         create an outlet object, save it in core data, delegate it to the parent view controller
+         if the room gets saved attach it to the corresponding room, if not delete the outlets 
+         first, before dismissing the input process
+         
+         #task#
+         */
+        NSArray *myOutlet = [NSArray arrayWithObjects:outletName, commandOn, commandOff, nil];
+        [self.delegate didSelectWith:self outlet:myOutlet];
+        
+    }
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
 }
 
 @end

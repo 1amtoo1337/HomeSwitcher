@@ -96,6 +96,7 @@
     // Configure the cell...
     Outlet *outlet = [self.outlets objectAtIndex:indexPath.row];
     cell.outletName.text = outlet.name;
+    cell.outletName.font = [UIFont fontWithName:@"Avenir" size:16];
 
     
     

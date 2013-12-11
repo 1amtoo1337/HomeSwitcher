@@ -7,8 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddOutletViewController.h"
 
-@interface AddRoomViewController : UITableViewController<NSFetchedResultsControllerDelegate, UITextFieldDelegate>
+
+@class AddRoomViewController;
+
+@protocol AddRoomDelegate <NSObject>
+
+-(void)didFinishRoomInput;
+
+@end
+
+
+@interface AddRoomViewController : UITableViewController<NSFetchedResultsControllerDelegate, UITextFieldDelegate, AddOutletDelegate>
+
+@property (nonatomic, weak) id<AddRoomDelegate>delegate;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

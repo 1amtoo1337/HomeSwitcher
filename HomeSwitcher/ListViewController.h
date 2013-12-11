@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddRoomViewController.h"
 
-@interface ListViewController : UITableViewController<NSFetchedResultsControllerDelegate>
-
-//@property (strong, nonatomic) DetailViewController *detailViewController;
+@interface ListViewController : UITableViewController<NSFetchedResultsControllerDelegate,AddRoomDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+- (IBAction)reloadData:(id)sender;
+
 
 
 @end
