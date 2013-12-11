@@ -10,6 +10,7 @@
 #import "AddOutletViewController.h"
 #import "LightSwitchCell.h"
 #import "Room.h"
+#import "Settings.h"
 
 @interface OutletViewController : UITableViewController<NSFetchedResultsControllerDelegate, AddOutletDelegate>
 
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) Room *room;
+@property (strong, nonatomic) Settings *settings;
 
 - (IBAction)addOutletToRoom:(UIBarButtonItem *)sender;
 

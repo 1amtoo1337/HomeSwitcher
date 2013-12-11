@@ -7,12 +7,13 @@
 //
 
 #import "OutletViewController.h"
+#import "AsyncUdpSocket.h"
 #include "Outlet.h"
 
 @interface OutletViewController ()
 
 @property (strong, nonatomic) NSArray *outlets;
-
+@property (strong, nonatomic) AsyncUdpSocket *socket;
 @end
 
 @implementation OutletViewController
@@ -45,7 +46,15 @@
     //core data
     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = delegate.managedObjectContext;
+    
+    NSLog(@"Creating UDP socket");
+    self.socket = [[AsyncUdpSocket alloc]initWithDelegate:self];
+    if (![self.socket bindToPort:21369 error:nil])
+        NSLog(@"Bind error");
+    [self.socket receiveWithTimeout:-1 tag:1];			//Setup to receive next UDP packet
 
+
+    [self loadSettings];
 }
 
 - (void)didReceiveMemoryWarning
@@ -169,25 +178,25 @@
 
     if(tempSwitch.on)
     {
-        NSLog(@"sending on command");
-        /*
+        NSLog(@"sending on command: '%@'",currentCommand.on);
+        
         AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
-        NSString * address = @"192.168.178.178";
-        UInt16 port = 8888;
+        NSLog(@"%i",[self.settings.serverPort integerValue]);
+        NSString * address = self.settings.serverIP;
+        UInt16 port = [self.settings.serverPort integerValue];
         NSData * data = [currentCommand.on dataUsingEncoding:NSUTF8StringEncoding];
         [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
-         */
         
     }else if(!tempSwitch.on)
     {
-        NSLog(@"sending off command");
-        /*
+        NSLog(@"sending off command: '%@'",currentCommand.off);
+        
         AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
-        NSString * address = @"192.168.178.178";
-        UInt16 port = 8888;
+        NSString * address = self.settings.serverIP;
+        UInt16 port = [self.settings.serverPort integerValue];
         NSData * data = [currentCommand.off dataUsingEncoding:NSUTF8StringEncoding];
         [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
-         */
+        
     }
 }
 
@@ -202,6 +211,31 @@
     }
     
     return [self GetIndexPathFromSender:((UIView*)[sender superview])];
+}
+
+-(void)loadSettings
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Settings" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    
+    NSArray *settingsArray = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if(settingsArray.count != 0)
+    {
+        NSLog(@"There is a current setting");
+        
+        self.settings = [settingsArray objectAtIndex:0];
+        NSLog(@"ArrayContents: '%@'",settingsArray);
+        NSLog(@"ip: '%@' port:'%@'",self.settings.serverIP, self.settings.serverPort);
+
+    }else{
+        NSLog(@"there is no current setting");
+    }
+    
+    
 }
 
 

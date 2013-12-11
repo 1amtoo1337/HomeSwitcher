@@ -38,6 +38,10 @@
 		102DEC2D1858C2B60066D814 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC2C1858C2B60066D814 /* Room.m */; };
 		102DEC301858C2B60066D814 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC2F1858C2B60066D814 /* Command.m */; };
 		102DEC331858C2B60066D814 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC321858C2B60066D814 /* Settings.m */; };
+		102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC381858CDB30066D814 /* GCDAsyncSocket.m */; };
+		102DEC3C1858CDB30066D814 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC3A1858CDB30066D814 /* GCDAsyncUdpSocket.m */; };
+		102DEC411858CDE60066D814 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC3E1858CDE60066D814 /* AsyncSocket.m */; };
+		102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC401858CDE60066D814 /* AsyncUdpSocket.m */; };
 		109E31DE1856C7E900882DE8 /* InputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31DD1856C7E900882DE8 /* InputCell.m */; };
 		109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E01856DA5400882DE8 /* LightSwitchCell.m */; };
 		109E31E318573A5900882DE8 /* plus_add_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 109E31E218573A5900882DE8 /* plus_add_green.png */; };
@@ -103,6 +107,14 @@
 		102DEC2F1858C2B60066D814 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
 		102DEC311858C2B60066D814 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		102DEC321858C2B60066D814 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		102DEC371858CDB20066D814 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = CocoaAsyncSocket/GCD/GCDAsyncSocket.h; sourceTree = SOURCE_ROOT; };
+		102DEC381858CDB30066D814 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = CocoaAsyncSocket/GCD/GCDAsyncSocket.m; sourceTree = SOURCE_ROOT; };
+		102DEC391858CDB30066D814 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = CocoaAsyncSocket/GCD/GCDAsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
+		102DEC3A1858CDB30066D814 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = CocoaAsyncSocket/GCD/GCDAsyncUdpSocket.m; sourceTree = SOURCE_ROOT; };
+		102DEC3D1858CDE60066D814 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = CocoaAsyncSocket/RunLoop/AsyncSocket.h; sourceTree = SOURCE_ROOT; };
+		102DEC3E1858CDE60066D814 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = CocoaAsyncSocket/RunLoop/AsyncSocket.m; sourceTree = SOURCE_ROOT; };
+		102DEC3F1858CDE60066D814 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncUdpSocket.h; path = CocoaAsyncSocket/RunLoop/AsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
+		102DEC401858CDE60066D814 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncUdpSocket.m; path = CocoaAsyncSocket/RunLoop/AsyncUdpSocket.m; sourceTree = SOURCE_ROOT; };
 		109E31DC1856C7E900882DE8 /* InputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell.h; sourceTree = "<group>"; };
 		109E31DD1856C7E900882DE8 /* InputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell.m; sourceTree = "<group>"; };
 		109E31DF1856DA5400882DE8 /* LightSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightSwitchCell.h; sourceTree = "<group>"; };
@@ -253,6 +265,14 @@
 		100CD4F0185669E600995D4B /* ASyncUDPSocket */ = {
 			isa = PBXGroup;
 			children = (
+				102DEC3D1858CDE60066D814 /* AsyncSocket.h */,
+				102DEC3E1858CDE60066D814 /* AsyncSocket.m */,
+				102DEC3F1858CDE60066D814 /* AsyncUdpSocket.h */,
+				102DEC401858CDE60066D814 /* AsyncUdpSocket.m */,
+				102DEC371858CDB20066D814 /* GCDAsyncSocket.h */,
+				102DEC381858CDB30066D814 /* GCDAsyncSocket.m */,
+				102DEC391858CDB30066D814 /* GCDAsyncUdpSocket.h */,
+				102DEC3A1858CDB30066D814 /* GCDAsyncUdpSocket.m */,
 			);
 			name = ASyncUDPSocket;
 			sourceTree = "<group>";
@@ -459,10 +479,14 @@
 				102DEC2A1858C2B50066D814 /* Outlet.m in Sources */,
 				100CD4C4185642EB00995D4B /* MasterViewController.m in Sources */,
 				100CD4F518566A8400995D4B /* ListViewController.m in Sources */,
+				102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */,
+				102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */,
 				100CD4B8185642EB00995D4B /* AppDelegate.m in Sources */,
 				109E31DE1856C7E900882DE8 /* InputCell.m in Sources */,
 				100CD4C1185642EB00995D4B /* HomeSwitcher.xcdatamodeld in Sources */,
 				100CD50418567EE600995D4B /* OutletViewController.m in Sources */,
+				102DEC411858CDE60066D814 /* AsyncSocket.m in Sources */,
+				102DEC3C1858CDB30066D814 /* GCDAsyncUdpSocket.m in Sources */,
 				102DEC331858C2B60066D814 /* Settings.m in Sources */,
 				102DEC301858C2B60066D814 /* Command.m in Sources */,
 				100CD4B4185642EA00995D4B /* main.m in Sources */,
