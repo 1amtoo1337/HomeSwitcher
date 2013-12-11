@@ -184,14 +184,6 @@
 				100CD4EE185669B000995D4B /* Boilerplate */,
 				100CD4C8185642EB00995D4B /* Images.xcassets */,
 				100CD4BF185642EB00995D4B /* HomeSwitcher.xcdatamodeld */,
-				102DEC311858C2B60066D814 /* Settings.h */,
-				102DEC321858C2B60066D814 /* Settings.m */,
-				102DEC2E1858C2B60066D814 /* Command.h */,
-				102DEC2F1858C2B60066D814 /* Command.m */,
-				102DEC2B1858C2B60066D814 /* Room.h */,
-				102DEC2C1858C2B60066D814 /* Room.m */,
-				102DEC281858C2B50066D814 /* Outlet.h */,
-				102DEC291858C2B50066D814 /* Outlet.m */,
 				100CD4AE185642EA00995D4B /* Supporting Files */,
 			);
 			path = HomeSwitcher;
@@ -271,8 +263,7 @@
 				100CD4B9185642EB00995D4B /* Main_iPhone.storyboard */,
 				109E31E418573EBB00882DE8 /* List */,
 				109E31E518573ECB00882DE8 /* Input */,
-				102DEC0D1858B9480066D814 /* SettingsViewController.h */,
-				102DEC0E1858B9480066D814 /* SettingsViewController.m */,
+				102DEC361858C6850066D814 /* Settings */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -297,8 +288,45 @@
 		1023A7011856BCA400F55AC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				102DEC311858C2B60066D814 /* Settings.h */,
+				102DEC321858C2B60066D814 /* Settings.m */,
+				102DEC2E1858C2B60066D814 /* Command.h */,
+				102DEC2F1858C2B60066D814 /* Command.m */,
+				102DEC2B1858C2B60066D814 /* Room.h */,
+				102DEC2C1858C2B60066D814 /* Room.m */,
+				102DEC281858C2B50066D814 /* Outlet.h */,
+				102DEC291858C2B50066D814 /* Outlet.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		102DEC341858C66E0066D814 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				109E31DF1856DA5400882DE8 /* LightSwitchCell.h */,
+				109E31E01856DA5400882DE8 /* LightSwitchCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		102DEC351858C67C0066D814 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				109E31DC1856C7E900882DE8 /* InputCell.h */,
+				109E31DD1856C7E900882DE8 /* InputCell.m */,
+				102DEBC618575B320066D814 /* OutletInputCell.h */,
+				102DEBC718575B320066D814 /* OutletInputCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		102DEC361858C6850066D814 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				102DEC0D1858B9480066D814 /* SettingsViewController.h */,
+				102DEC0E1858B9480066D814 /* SettingsViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		109E31E418573EBB00882DE8 /* List */ = {
@@ -308,8 +336,7 @@
 				100CD4F418566A8400995D4B /* ListViewController.m */,
 				100CD50218567EE600995D4B /* OutletViewController.h */,
 				100CD50318567EE600995D4B /* OutletViewController.m */,
-				109E31DF1856DA5400882DE8 /* LightSwitchCell.h */,
-				109E31E01856DA5400882DE8 /* LightSwitchCell.m */,
+				102DEC341858C66E0066D814 /* Cells */,
 			);
 			name = List;
 			sourceTree = "<group>";
@@ -319,12 +346,9 @@
 			children = (
 				100CD4FC1856703000995D4B /* AddRoomViewController.h */,
 				100CD4FD1856703000995D4B /* AddRoomViewController.m */,
-				109E31DC1856C7E900882DE8 /* InputCell.h */,
-				109E31DD1856C7E900882DE8 /* InputCell.m */,
 				109E31E618573EFD00882DE8 /* AddOutletViewController.h */,
 				109E31E718573EFD00882DE8 /* AddOutletViewController.m */,
-				102DEBC618575B320066D814 /* OutletInputCell.h */,
-				102DEBC718575B320066D814 /* OutletInputCell.m */,
+				102DEC351858C67C0066D814 /* Cells */,
 			);
 			name = Input;
 			sourceTree = "<group>";

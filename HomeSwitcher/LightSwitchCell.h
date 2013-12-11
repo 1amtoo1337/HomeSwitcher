@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+/*
+ in the outletviewcontroller when a switch is switch, send the command from the outlet of that switch over the network
+ */
 @interface LightSwitchCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UISwitch *outletSwitch;

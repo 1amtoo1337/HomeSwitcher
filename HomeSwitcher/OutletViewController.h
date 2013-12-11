@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AddOutletViewController.h"
+#import "LightSwitchCell.h"
 #import "Room.h"
 
 @interface OutletViewController : UITableViewController<NSFetchedResultsControllerDelegate, AddOutletDelegate>

@@ -7,7 +7,6 @@
 //
 
 #import "OutletViewController.h"
-#import "LightSwitchCell.h"
 #include "Outlet.h"
 
 @interface OutletViewController ()
@@ -79,7 +78,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     LightSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
+    [cell.outletSwitch addTarget:self action:@selector(lightSwitchSwitched:) forControlEvents:UIControlEventTouchUpInside];
     
     // Configure the cell...
     Outlet *outlet = [self.outlets objectAtIndex:indexPath.row];
@@ -157,6 +156,52 @@
         AddOutletViewController *vc = [segue destinationViewController];
         vc.delegate = self;
     }
+}
+
+-(void) lightSwitchSwitched:(id)sender
+{
+    UISwitch *tempSwitch = (UISwitch *)sender;
+    NSIndexPath *indexPath = [self GetIndexPathFromSender:sender];
+    
+    Outlet *currentOutlet = [self.outlets objectAtIndex:indexPath.row];
+    Command *currentCommand = currentOutlet.command;
+    NSLog(@"Command on: '%@' Command off: '%@'",currentCommand.on, currentCommand.off);
+
+    if(tempSwitch.on)
+    {
+        NSLog(@"sending on command");
+        /*
+        AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
+        NSString * address = @"192.168.178.178";
+        UInt16 port = 8888;
+        NSData * data = [currentCommand.on dataUsingEncoding:NSUTF8StringEncoding];
+        [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
+         */
+        
+    }else if(!tempSwitch.on)
+    {
+        NSLog(@"sending off command");
+        /*
+        AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
+        NSString * address = @"192.168.178.178";
+        UInt16 port = 8888;
+        NSData * data = [currentCommand.off dataUsingEncoding:NSUTF8StringEncoding];
+        [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
+         */
+    }
+}
+
+-(NSIndexPath*)GetIndexPathFromSender:(id)sender{
+    
+    if(!sender) { return nil; }
+    
+    if([sender isKindOfClass:[UITableViewCell class]])
+    {
+        UITableViewCell *cell = sender;
+        return [self.tableView indexPathForCell:cell];
+    }
+    
+    return [self GetIndexPathFromSender:((UIView*)[sender superview])];
 }
 
 

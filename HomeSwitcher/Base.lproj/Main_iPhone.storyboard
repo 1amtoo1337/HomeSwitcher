@@ -50,7 +50,7 @@
             </objects>
             <point key="canvasLocation" x="164" y="565"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings View Controller - Settings-->
         <scene sceneID="gV7-XO-zIp">
             <objects>
                 <viewController id="YMK-Lw-H1e" customClass="SettingsViewController" sceneMemberID="viewController">
@@ -130,7 +130,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3b4-Cd-bEV">
+                    <navigationItem key="navigationItem" title="Settings" id="3b4-Cd-bEV">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="4UJ-Jb-klo">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOx-vY-U47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="-48"/>
+            <point key="canvasLocation" x="1234" y="-163"/>
         </scene>
         <!--Outlet View Controller-->
         <scene sceneID="mup-Xx-QcU">
@@ -382,7 +382,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBS-7A-NZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525" y="-48"/>
+            <point key="canvasLocation" x="708" y="-163"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
