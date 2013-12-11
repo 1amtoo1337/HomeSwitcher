@@ -1,3 +1,6 @@
 [submodule "CocoaAsyncSocket"]
 	path = CocoaAsyncSocket
 	url = git@github.com:robbiehanson/CocoaAsyncSocket.git
+[submodule "ProgressHUD"]
+	path = ProgressHUD
+	url = git@github.com:relatedcode/ProgressHUD.git

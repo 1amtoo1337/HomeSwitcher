@@ -42,6 +42,8 @@
 		102DEC3C1858CDB30066D814 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC3A1858CDB30066D814 /* GCDAsyncUdpSocket.m */; };
 		102DEC411858CDE60066D814 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC3E1858CDE60066D814 /* AsyncSocket.m */; };
 		102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC401858CDE60066D814 /* AsyncUdpSocket.m */; };
+		102DEC481858D6AF0066D814 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 102DEC451858D6AF0066D814 /* ProgressHUD.bundle */; };
+		102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC471858D6AF0066D814 /* ProgressHUD.m */; };
 		109E31DE1856C7E900882DE8 /* InputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31DD1856C7E900882DE8 /* InputCell.m */; };
 		109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E01856DA5400882DE8 /* LightSwitchCell.m */; };
 		109E31E318573A5900882DE8 /* plus_add_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 109E31E218573A5900882DE8 /* plus_add_green.png */; };
@@ -115,6 +117,9 @@
 		102DEC3E1858CDE60066D814 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = CocoaAsyncSocket/RunLoop/AsyncSocket.m; sourceTree = SOURCE_ROOT; };
 		102DEC3F1858CDE60066D814 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncUdpSocket.h; path = CocoaAsyncSocket/RunLoop/AsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
 		102DEC401858CDE60066D814 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncUdpSocket.m; path = CocoaAsyncSocket/RunLoop/AsyncUdpSocket.m; sourceTree = SOURCE_ROOT; };
+		102DEC451858D6AF0066D814 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ProgressHUD.bundle; path = ProgressHUD/ProgressHUD/ProgressHUD.bundle; sourceTree = SOURCE_ROOT; };
+		102DEC461858D6AF0066D814 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUD.h; path = ProgressHUD/ProgressHUD/ProgressHUD.h; sourceTree = SOURCE_ROOT; };
+		102DEC471858D6AF0066D814 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUD.m; path = ProgressHUD/ProgressHUD/ProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		109E31DC1856C7E900882DE8 /* InputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell.h; sourceTree = "<group>"; };
 		109E31DD1856C7E900882DE8 /* InputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell.m; sourceTree = "<group>"; };
 		109E31DF1856DA5400882DE8 /* LightSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightSwitchCell.h; sourceTree = "<group>"; };
@@ -256,6 +261,7 @@
 		100CD4EF185669DB00995D4B /* Imported Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				102DEC4A1858D6B60066D814 /* ProgressHud */,
 				100CD4F0185669E600995D4B /* ASyncUDPSocket */,
 				100CD4E6185659DE00995D4B /* TestFlight */,
 			);
@@ -347,6 +353,16 @@
 				102DEC0E1858B9480066D814 /* SettingsViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		102DEC4A1858D6B60066D814 /* ProgressHud */ = {
+			isa = PBXGroup;
+			children = (
+				102DEC451858D6AF0066D814 /* ProgressHUD.bundle */,
+				102DEC461858D6AF0066D814 /* ProgressHUD.h */,
+				102DEC471858D6AF0066D814 /* ProgressHUD.m */,
+			);
+			name = ProgressHud;
 			sourceTree = "<group>";
 		};
 		109E31E418573EBB00882DE8 /* List */ = {
@@ -451,6 +467,7 @@
 			files = (
 				100CD4BE185642EB00995D4B /* Main_iPad.storyboard in Resources */,
 				109E31E318573A5900882DE8 /* plus_add_green.png in Resources */,
+				102DEC481858D6AF0066D814 /* ProgressHUD.bundle in Resources */,
 				100CD4C9185642EB00995D4B /* Images.xcassets in Resources */,
 				100CD4BB185642EB00995D4B /* Main_iPhone.storyboard in Resources */,
 				100CD4B2185642EA00995D4B /* InfoPlist.strings in Resources */,
@@ -479,6 +496,7 @@
 				102DEC2A1858C2B50066D814 /* Outlet.m in Sources */,
 				100CD4C4185642EB00995D4B /* MasterViewController.m in Sources */,
 				100CD4F518566A8400995D4B /* ListViewController.m in Sources */,
+				102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */,
 				102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */,
 				102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */,
 				100CD4B8185642EB00995D4B /* AppDelegate.m in Sources */,

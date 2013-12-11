@@ -7,6 +7,7 @@
 //
 
 #import "AddRoomViewController.h"
+#import "ProgressHUD.h"
 #import "InputCell.h"
 #import "Room.h"
 #import "Outlet.h"
@@ -246,7 +247,7 @@
 {
 
     [self.outlets addObject:outlet];
-
+    [ProgressHUD showSuccess:@"Outlet added"];
     [self.tableView reloadData];
     
 }

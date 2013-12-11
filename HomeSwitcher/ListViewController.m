@@ -12,6 +12,7 @@
 #import "Room.h"
 #import "Outlet.h"
 #import "Command.h"
+#import "ProgressHUD.h"
 
 @interface ListViewController ()
 
@@ -101,6 +102,7 @@
                     NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                 }
         [self fetchRoomsFromCoreData];
+        [ProgressHUD showSuccess:@"Room deleted"];
         
         [tableView reloadData];
         
@@ -136,6 +138,7 @@
 {
     NSLog(@"finished room input fired");
     [self fetchRoomsFromCoreData];
+    [ProgressHUD showSuccess:@"Room added"];
     [self.tableView reloadData];
 }
 
