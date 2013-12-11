@@ -89,6 +89,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="pss-nd-8Jx">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wJ4-O6-gq6"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eK8-UL-fQH">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -141,7 +142,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="l42-vV-yxa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ao8-mL-bHn">
+                        <barButtonItem key="backBarButtonItem" title=" " id="T8y-5U-zY2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Ao8-mL-bHn">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
@@ -264,7 +266,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="CWC-cF-WT1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="saveOutlet:" destination="870-MZ-a55" id="231-yA-fke"/>
+                                <action selector="validateInput:" destination="870-MZ-a55" id="zZo-3d-Pri"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

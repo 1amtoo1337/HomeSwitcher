@@ -31,19 +31,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //NavBar Gradient
-//    CAGradientLayer *gradient = [CAGradientLayer layer];
-//    gradient.frame = CGRectMake(0, -20, 320, 64);
-//    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:38.0f / 255.0f green:126.0f / 255.0f blue:214.0f / 255.0f alpha:1.0f] CGColor], (id)[[UIColor colorWithRed:99.0f / 255.0f green:165.0f / 255.0f blue:216.0f / 255.0f alpha:1.0f] CGColor], nil];
-//    [gradient setStartPoint:CGPointMake(0.0, 0.5)];
-//    [gradient setEndPoint:CGPointMake(1.0, 0.5)];
-//    [self.navigationController.navigationBar.layer insertSublayer:gradient atIndex:1];
-    
     //navigationItem Image
     UIImageView *navigationImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 98, 34)];
     navigationImage.image=[UIImage imageNamed:@"navTitle.png"];

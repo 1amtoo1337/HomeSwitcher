@@ -14,7 +14,7 @@
 
 @protocol AddRoomDelegate <NSObject>
 
--(void)didFinishRoomInput;
+-(void)didFinishRoomInput:(AddRoomViewController *)controller;
 
 @end
 

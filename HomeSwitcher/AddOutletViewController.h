@@ -24,6 +24,6 @@
 @property (nonatomic, strong) NSArray *importOutlet;
 
 - (IBAction)cancelOutletEntry:(UIBarButtonItem *)sender;
-- (IBAction)saveOutlet:(UIBarButtonItem *)sender;
+- (IBAction)validateInput:(UIBarButtonItem *)sender;
 
 @end

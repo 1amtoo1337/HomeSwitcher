@@ -14,8 +14,8 @@
 
 @interface AddRoomViewController ()
 
-@property BOOL textEntered;
 @property (strong,nonatomic) NSMutableArray *outlets;
+@property BOOL textEntered;
 
 @end
 
@@ -36,6 +36,8 @@
     
     self.textEntered = NO;
     self.outlets = [NSMutableArray array];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     //set navigationItem Image
     UIImageView *navigationImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 98, 34)];
@@ -109,6 +111,7 @@
         cell.textField.delegate = self;
         cell.textField.tag = 11; //#task#
         cell.textField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
+        [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         cell.accessoryType = UITableViewCellAccessoryNone;
         
     }else if(indexPath.section == 0 && indexPath.row == 1)
@@ -135,8 +138,29 @@
     return cell;
 }
 
+-(void)textFieldDidChange:(id)sender
+{
+    NSString *roomName = ((UITextField*)[self.view viewWithTag:11]).text;
+ 
+    if(roomName.length > 0)
+    {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.textEntered = YES;
+        
+        
+    }else if(roomName.length == 0)
+    {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.textEntered = NO;
+    }
+    
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITextField *textField = ((UITextField*)[self.view viewWithTag:11]);
+    [textField resignFirstResponder];
+    
     NSUInteger section = indexPath.section;
     NSUInteger row = indexPath.row;
     
@@ -150,6 +174,52 @@
     return indexPath;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    NSString *sectionTitle;
+    
+    // Create label with section title
+    UILabel *label = [[UILabel alloc] init];
+    if(section == 0)
+    {
+        sectionTitle = @"Room";
+        label.frame = CGRectMake(5, 28, 284, 23);
+    }
+    if(section == 1)
+    {
+        sectionTitle = @"Outlets";
+        label.frame = CGRectMake(5, 10, 284, 23);
+    }
+    label.textColor = [UIColor lightGrayColor];
+    label.font = [UIFont fontWithName:@"Avenir" size:17];
+    label.text = sectionTitle;
+    label.backgroundColor = [UIColor clearColor];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    [view addSubview:label];
+    
+    return view;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [self.outlets removeObjectAtIndex:indexPath.row];
+        
+        [tableView reloadData];
+        
+    }
+
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 0) return NO;
+    
+    return YES;
+    
+}
 
 #pragma mark- UIScrollView Delegate
 
@@ -174,12 +244,9 @@
 #pragma mark - Outlet Delegate
 -(void)didSelectWith:(AddOutletViewController *)controller outlet:(NSArray *)outlet
 {
-    for(NSString *str in outlet)
-    {
-        NSLog(@"String: '%@'",str);
-    }
+
     [self.outlets addObject:outlet];
-    NSLog(@"Outlets: '%i'",self.outlets.count);
+
     [self.tableView reloadData];
     
 }
@@ -216,17 +283,17 @@
     //this fuction needs to trigger a delegate method that reloads the listView tableView
     if([roomName isEqualToString:@""] || self.outlets.count == 0)
     {
-        NSString *err1 = @"No Roomname specified";
-        NSString *err2 = @"No Outlets for room specified";
+        NSString *err0 = @"No Roomname specified";
+        NSString *err1 = @"No Outlets for room specified";
         
         UIAlertView *alert;
         if([roomName isEqualToString:@""])
         {
-            alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:err1 delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:err0 delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             [alert show];
         }else if (self.outlets.count == 0)
         {
-            alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:err2 delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:err1 delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             [alert show];
         }
         
@@ -282,7 +349,7 @@
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     
-    [self.delegate didFinishRoomInput]; //kasius knaktus
+    [self.delegate didFinishRoomInput:self]; //kasius knaktus
     
 }
 
@@ -291,7 +358,7 @@
 {
     NSString *text = ((UITextField*)[self.view viewWithTag:11]).text;
     
-    if(![text isEqualToString:@""])
+    if(![text isEqualToString:@""] || self.outlets.count > 0)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cancel" message:@"Are you sure you want to cancel?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok" , nil];
         [alert show];
@@ -306,10 +373,8 @@
 {
     if (buttonIndex == 0)
     {
-        NSLog(@"cancel");
     } else if (buttonIndex == 1)
     {
-        NSLog(@"ok");
         [self dismissViewControllerAnimated:YES completion:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refresh" object:self];
     }

@@ -8,6 +8,7 @@
 
 #import "ListViewController.h"
 #import "OutletViewController.h"
+#import "AddRoomViewController.h"
 #import "Room.h"
 #import "Outlet.h"
 #import "Command.h"
@@ -44,14 +45,8 @@
     //core data
     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = delegate.managedObjectContext;
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSError *error;
 
-    self.rooms = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    [self fetchRoomsFromCoreData];
     
 }
 
@@ -96,15 +91,18 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath: (NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        //        Room *room = [self.rooms objectAtIndex:indexPath.row];
-        //
-        //        [self.managedObjectContext deleteObject:room];
-        //
-        //        NSError *error = nil;
-        //        if (![self.managedObjectContext save:&error])
-        //        {
-        //            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        //        }
+                Room *room = [self.rooms objectAtIndex:indexPath.row];
+        
+                [self.managedObjectContext deleteObject:room];
+    
+                NSError *error = nil;
+                if (![self.managedObjectContext save:&error])
+                {
+                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                }
+        [self fetchRoomsFromCoreData];
+        
+        [tableView reloadData];
         
     }
 }
@@ -122,13 +120,22 @@
         Room *room = [self.rooms objectAtIndex:indexPath.row];
         vc.room = room;
     }
+    
+    if([[segue identifier] isEqualToString:@"listToAddSegue"])
+    {
+        AddRoomViewController *vc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+       
+        vc.delegate = self;
+    }
+    
 }
 
 #pragma mark - Custom Implementation
 
--(void)didFinishRoomInput
+-(void)didFinishRoomInput:(AddRoomViewController *)controller
 {
     NSLog(@"finished room input fired");
+    [self fetchRoomsFromCoreData];
     [self.tableView reloadData];
 }
 
@@ -136,5 +143,16 @@
 - (IBAction)reloadData:(id)sender
 {
     [self.tableView reloadData];
+}
+
+-(void)fetchRoomsFromCoreData
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    
+    self.rooms = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 @end

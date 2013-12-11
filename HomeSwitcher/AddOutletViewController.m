@@ -13,6 +13,7 @@
 @interface AddOutletViewController ()
 
 @property (strong,nonatomic) NSArray *array;
+@property BOOL textEntered;
 
 @end
 
@@ -31,9 +32,8 @@
 {
     [super viewDidLoad];
 
-    //hide backButton
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     self.array = [[NSArray alloc] initWithObjects:@"Name:",@"Command ON:", @"Command OFF:", nil];
     
     //navigationItem Image
@@ -56,6 +56,27 @@
 {
     return @"Add Outlet";
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    
+    
+    // Create label with section title
+    UILabel *label = [[UILabel alloc] init];
+
+    NSString *sectionTitle = @"Add Outlet";
+    label.frame = CGRectMake(5, 28, 284, 23);
+    label.textColor = [UIColor lightGrayColor];
+    label.font = [UIFont fontWithName:@"Avenir" size:17];
+    label.text = sectionTitle;
+    label.backgroundColor = [UIColor clearColor];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    [view addSubview:label];
+    
+    return view;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -76,10 +97,31 @@
     cell.outletTextField.tag = indexPath.row + 100;
     cell.outletTextField.delegate = self;
     cell.outletTextField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
+    [cell.outletTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     return cell;
 }
 
+-(void)textFieldDidChange:(id)sender
+{
+    NSString *outletName = ((UITextField*)[self.view viewWithTag:100]).text;
+    NSString *commandOn = ((UITextField*)[self.view viewWithTag:101]).text;
+    NSString *commandOff = ((UITextField*)[self.view viewWithTag:102]).text;
+
+    if(outletName.length > 0 || commandOn.length > 0 || commandOff.length > 0)
+    {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.textEntered = YES;
+
+        
+    }else if(outletName.length == 0 || commandOn.length == 0 || commandOff.length == 0)
+    {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.textEntered = NO;
+
+    }
+    
+}
 
 #pragma mark - UITextField Delegate
 
@@ -98,6 +140,7 @@
 {
     
 }
+
 
 #pragma mark - custom
 
@@ -122,11 +165,17 @@
 
 - (IBAction)cancelOutletEntry:(UIBarButtonItem *)sender
 {
-    [self showAlertView];
-    
+    if(self.textEntered == YES)
+    {
+        [self showAlertView];
+        
+    }else if(self.textEntered == NO)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
-- (IBAction)saveOutlet:(UIBarButtonItem *)sender
+- (IBAction)validateInput:(UIBarButtonItem *)sender
 {
     
     NSString *outletName = ((UITextField*)[self.view viewWithTag:100]).text;
@@ -136,10 +185,26 @@
     //this fuction needs to trigger a delegate method that reloads the listView tableView
     if([outletName isEqualToString:@""] || [commandOn isEqualToString:@""] || [commandOff isEqualToString:@""])
     {
-        //not all fields were entered
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:@"Not all fields were entered" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-        [alert show];
+        NSString *err0 = @"No Outletname specified";
+        NSString *err1 = @"Please specify Command ON";
+        NSString *err2 = @"Please specify Command OFF";
         
+        //not all fields were entered
+        UIAlertView *alert;
+        if([outletName isEqualToString:@""])
+        {
+            alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:err0 delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }else if ([commandOn isEqualToString:@""])
+        {
+            alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:err1 delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }else if ([commandOff isEqualToString:@""])
+        {
+            alert = [[UIAlertView alloc] initWithTitle:@"Enter all Fields" message:err2 delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }
+
     }else if(![outletName isEqualToString:@""] && ![commandOn isEqualToString:@""] && ![commandOff isEqualToString:@""])
     {
 
@@ -153,9 +218,9 @@
         NSArray *myOutlet = [NSArray arrayWithObjects:outletName, commandOn, commandOff, nil];
         [self.delegate didSelectWith:self outlet:myOutlet];
         
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
