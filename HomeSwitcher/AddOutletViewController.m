@@ -12,7 +12,7 @@
 
 @interface AddOutletViewController ()
 
-@property (strong,nonatomic) NSArray *array;
+@property (strong,nonatomic) NSArray *cellText;
 @property BOOL textEntered;
 
 @end
@@ -34,7 +34,7 @@
 
     [self.navigationItem setHidesBackButton:YES animated:YES];
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    self.array = [[NSArray alloc] initWithObjects:@"Name:",@"Command ON:", @"Command OFF:", nil];
+    self.cellText = [[NSArray alloc] initWithObjects:@"Name:",@"Command ON:", @"Command OFF:", nil];
     
     //navigationItem Image
     UIImageView *navigationImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 98, 34)];
@@ -43,6 +43,13 @@
     [workaroundImageView addSubview:navigationImage];
     self.navigationItem.titleView = workaroundImageView;
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    UITextField *outletNameTextField = ((UITextField*)[self.view viewWithTag:100]); //#task#
+    [outletNameTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,7 +91,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.array.count;
+    return self.cellText.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,12 +99,11 @@
     static NSString *CellIdentifier = @"Cell";
     OutletInputCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    cell.outletNameLabel.text = [self.array objectAtIndex:indexPath.row];
-    cell.outletNameLabel.font = [UIFont fontWithName:@"Avenir" size:16]; //#task#
-    cell.outletTextField.tag = indexPath.row + 100;
+    cell.outletTextField.tag = indexPath.row + 100; //#task#
     cell.outletTextField.delegate = self;
     cell.outletTextField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
     [cell.outletTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    cell.outletTextField.placeholder = [self.cellText objectAtIndex:indexPath.row];
     
     return cell;
 }

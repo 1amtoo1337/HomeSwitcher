@@ -58,6 +58,33 @@
 }
 
 #pragma mark - Table view data source
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0) return @"Room";
+    
+    return @"default";
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    NSString *sectionTitle;
+    
+    // Create label with section title
+    UILabel *label = [[UILabel alloc] init];
+    
+    sectionTitle = @"Rooms";
+    label.frame = CGRectMake(5, 28, 284, 23);
+    label.textColor = [UIColor lightGrayColor];
+    label.font = [UIFont fontWithName:@"Avenir" size:17];
+    label.text = sectionTitle;
+    label.backgroundColor = [UIColor clearColor];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    [view addSubview:label];
+    
+    return view;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

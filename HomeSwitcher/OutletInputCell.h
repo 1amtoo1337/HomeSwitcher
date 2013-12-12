@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OutletInputCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *outletNameLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *outletTextField;
 
 @end

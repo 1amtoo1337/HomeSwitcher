@@ -52,6 +52,17 @@
     self.managedObjectContext = delegate.managedObjectContext;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    UITextField *outletNameTextField = ((UITextField*)[self.view viewWithTag:11]); //#task#
+    if (outletNameTextField.text.length == 0)
+    {
+        [outletNameTextField becomeFirstResponder];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -68,21 +79,33 @@
     return @"default";
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UIImageView *headerTitleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
-//    //[headerTitleView setImage:sectionHeaderBackgroundImage];
-//
-//    UILabel *sectionTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 40, 38, 22 - 10)];
-//    sectionTitleLabel.textColor = [UIColor redColor];
-//    sectionTitleLabel.backgroundColor = [UIColor clearColor];
-//    sectionTitleLabel.textAlignment = NSTextAlignmentLeft;
-//    sectionTitleLabel.text = @"Room";
-//    sectionTitleLabel.font = [UIFont fontWithName:@"Avenir" size:16];
-//    [sectionTitleLabel setAdjustsFontSizeToFitWidth:YES];
-//    [headerTitleView addSubview:sectionTitleLabel];
-//
-//    return headerTitleView;
-//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    NSString *sectionTitle;
+    
+    // Create label with section title
+    UILabel *label = [[UILabel alloc] init];
+    if(section == 0)
+    {
+        sectionTitle = @"Add Room";
+        label.frame = CGRectMake(5, 28, 284, 23);
+    }
+    if(section == 1)
+    {
+        sectionTitle = @"Outlets";
+        label.frame = CGRectMake(5, 10, 284, 23);
+    }
+    label.textColor = [UIColor lightGrayColor];
+    label.font = [UIFont fontWithName:@"Avenir" size:17];
+    label.text = sectionTitle;
+    label.backgroundColor = [UIColor clearColor];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    [view addSubview:label];
+    
+    return view;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -104,23 +127,20 @@
     static NSString *CellIdentifier = @"Cell";
     InputCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    cell.textField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
     
     if(indexPath.section == 0 && indexPath.row == 0)
     {
-        cell.nameLabel.text = @"Name:";
-        cell.nameLabel.font = [UIFont fontWithName:@"Avenir" size:16]; //#task#
         cell.textField.delegate = self;
         cell.textField.tag = 11; //#task#
-        cell.textField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
         [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textField.placeholder = @"Roomname"; // PLCHLDR_ADD_ROOM
         
     }else if(indexPath.section == 0 && indexPath.row == 1)
     {
-        cell.nameLabel.text = @"Add Outlet";
-        cell.nameLabel.font = [UIFont fontWithName:@"Avenir" size:16]; //#task#
         [cell.textField setHidden:YES];
-
+        
         UIImageView *plus = [[UIImageView alloc] initWithFrame:CGRectMake(270, 5, 30, 30)];
         plus.image = [UIImage imageNamed:@"plus_add_green.png"];
         
@@ -129,10 +149,8 @@
         
     }else if(indexPath.section == 1)
     {
-        NSString *str = [[self.outlets objectAtIndex:indexPath.row] objectAtIndex:0];
-        cell.nameLabel.text = str;
-        cell.nameLabel.font = [UIFont fontWithName:@"Avenir" size:16]; //#task#
-        cell.textField.hidden = YES;
+        cell.textField.text = [[self.outlets objectAtIndex:indexPath.row] objectAtIndex:0];
+        cell.textField.enabled = NO;
         
     }
     
@@ -142,7 +160,7 @@
 -(void)textFieldDidChange:(id)sender
 {
     NSString *roomName = ((UITextField*)[self.view viewWithTag:11]).text;
- 
+    
     if(roomName.length > 0)
     {
         self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -175,33 +193,6 @@
     return indexPath;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    NSString *sectionTitle;
-    
-    // Create label with section title
-    UILabel *label = [[UILabel alloc] init];
-    if(section == 0)
-    {
-        sectionTitle = @"Room";
-        label.frame = CGRectMake(5, 28, 284, 23);
-    }
-    if(section == 1)
-    {
-        sectionTitle = @"Outlets";
-        label.frame = CGRectMake(5, 10, 284, 23);
-    }
-    label.textColor = [UIColor lightGrayColor];
-    label.font = [UIFont fontWithName:@"Avenir" size:17];
-    label.text = sectionTitle;
-    label.backgroundColor = [UIColor clearColor];
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-    [view addSubview:label];
-    
-    return view;
-}
-
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
@@ -211,7 +202,7 @@
         [tableView reloadData];
         
     }
-
+    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -245,7 +236,7 @@
 #pragma mark - Outlet Delegate
 -(void)didSelectWith:(AddOutletViewController *)controller outlet:(NSArray *)outlet
 {
-
+    
     [self.outlets addObject:outlet];
     [ProgressHUD showSuccess:@"Outlet added"];
     [self.tableView reloadData];
