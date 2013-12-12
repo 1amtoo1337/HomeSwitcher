@@ -51,6 +51,7 @@
 		10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AE6D185A7771009EF301 /* SevenSwitch.m */; };
 		10E3AE71185A7BC5009EF301 /* blitz_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */; };
 		10E3AE72185A7BC5009EF301 /* blitz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE70185A7BC5009EF301 /* blitz@2x.png */; };
+		10E3AE74185A8179009EF301 /* chevron@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE73185A8179009EF301 /* chevron@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		10E3AE6D185A7771009EF301 /* SevenSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenSwitch.m; sourceTree = "<group>"; };
 		10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz_off@2x.png"; path = "Images/blitz_off@2x.png"; sourceTree = "<group>"; };
 		10E3AE70185A7BC5009EF301 /* blitz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz@2x.png"; path = "Images/blitz@2x.png"; sourceTree = "<group>"; };
+		10E3AE73185A8179009EF301 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevron@2x.png"; path = "Images/chevron@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +316,7 @@
 		100CD4F818566CF500995D4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				10E3AE73185A8179009EF301 /* chevron@2x.png */,
 				10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */,
 				10E3AE70185A7BC5009EF301 /* blitz@2x.png */,
 				109E31E218573A5900882DE8 /* plus_add_green.png */,
@@ -484,6 +487,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E3AE74185A8179009EF301 /* chevron@2x.png in Resources */,
 				100CD4BE185642EB00995D4B /* Main_iPad.storyboard in Resources */,
 				109E31E318573A5900882DE8 /* plus_add_green.png in Resources */,
 				102DEC481858D6AF0066D814 /* ProgressHUD.bundle in Resources */,

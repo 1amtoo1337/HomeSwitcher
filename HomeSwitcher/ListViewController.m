@@ -105,6 +105,10 @@
     cell.textLabel.text = room.name;
     cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:16];
     
+    UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chevron.png"]];
+    cell.accessoryView = checkmark;
+
+    
     return cell;
 }
 

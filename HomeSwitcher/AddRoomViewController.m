@@ -139,7 +139,9 @@
         
     }else if(indexPath.section == 0 && indexPath.row == 1)
     {
-        [cell.textField setHidden:YES];
+        cell.textField.text = @"Add Outlet";
+        cell.textField.enabled = NO;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
         UIImageView *plus = [[UIImageView alloc] initWithFrame:CGRectMake(270, 5, 30, 30)];
         plus.image = [UIImage imageNamed:@"plus_add_green.png"];
