@@ -7,6 +7,7 @@
 //
 
 #import "OutletViewController.h"
+#import "SevenSwitch.h"
 #import "AsyncUdpSocket.h"
 #include "Outlet.h"
 
@@ -88,15 +89,54 @@
     static NSString *CellIdentifier = @"Cell";
     LightSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell.outletSwitch addTarget:self action:@selector(lightSwitchSwitched:) forControlEvents:UIControlEventTouchUpInside];
-    
+    cell.outletSwitch.hidden = YES;
     // Configure the cell...
     Outlet *outlet = [self.outlets objectAtIndex:indexPath.row];
     cell.outletName.text = outlet.name;
     cell.outletName.font = [UIFont fontWithName:@"Avenir" size:16];
 
-    
+    SevenSwitch *mySwitch = [[SevenSwitch alloc] initWithFrame:CGRectMake(251, 6, 51, 31)];
+    [mySwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    mySwitch.offImage = [UIImage imageNamed:@"blitz_off.png"];
+    mySwitch.onImage = [UIImage imageNamed:@"blitz.png"];
+    mySwitch.onTintColor = [UIColor colorWithRed:38.0f / 255.0f green:126.0f / 255.0f blue:214.0f / 255.0f alpha:1.00f];
+
+    [cell addSubview:mySwitch];
     
     return cell;
+}
+
+- (void)switchChanged:(SevenSwitch *)sender {
+    NSLog(@"Changed value to: %@", sender.on ? @"ON" : @"OFF");
+
+    NSIndexPath *indexPath = [self GetIndexPathFromSender:sender];
+    
+    Outlet *currentOutlet = [self.outlets objectAtIndex:indexPath.row];
+    Command *currentCommand = currentOutlet.command;
+    NSLog(@"Command on: '%@' Command off: '%@'",currentCommand.on, currentCommand.off);
+    
+    if(sender.on)
+    {
+        NSLog(@"sending on command: '%@'",currentCommand.on);
+        
+        AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
+        NSLog(@"%i",[self.settings.serverPort integerValue]);
+        NSString * address = self.settings.serverIP;
+        UInt16 port = [self.settings.serverPort integerValue];
+        NSData * data = [currentCommand.on dataUsingEncoding:NSUTF8StringEncoding];
+        [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
+        
+    }else if(!sender.on)
+    {
+        NSLog(@"sending off command: '%@'",currentCommand.off);
+        
+        AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
+        NSString * address = self.settings.serverIP;
+        UInt16 port = [self.settings.serverPort integerValue];
+        NSData * data = [currentCommand.off dataUsingEncoding:NSUTF8StringEncoding];
+        [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
+        
+    }
 }
 
 // Override to support conditional editing of the table view.

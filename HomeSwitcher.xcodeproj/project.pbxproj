@@ -48,6 +48,9 @@
 		109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E01856DA5400882DE8 /* LightSwitchCell.m */; };
 		109E31E318573A5900882DE8 /* plus_add_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 109E31E218573A5900882DE8 /* plus_add_green.png */; };
 		109E31E818573EFD00882DE8 /* AddOutletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E718573EFD00882DE8 /* AddOutletViewController.m */; };
+		10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AE6D185A7771009EF301 /* SevenSwitch.m */; };
+		10E3AE71185A7BC5009EF301 /* blitz_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */; };
+		10E3AE72185A7BC5009EF301 /* blitz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE70185A7BC5009EF301 /* blitz@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +130,10 @@
 		109E31E218573A5900882DE8 /* plus_add_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_add_green.png; sourceTree = "<group>"; };
 		109E31E618573EFD00882DE8 /* AddOutletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOutletViewController.h; sourceTree = "<group>"; };
 		109E31E718573EFD00882DE8 /* AddOutletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOutletViewController.m; sourceTree = "<group>"; };
+		10E3AE6C185A7771009EF301 /* SevenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenSwitch.h; sourceTree = "<group>"; };
+		10E3AE6D185A7771009EF301 /* SevenSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenSwitch.m; sourceTree = "<group>"; };
+		10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz_off@2x.png"; path = "Images/blitz_off@2x.png"; sourceTree = "<group>"; };
+		10E3AE70185A7BC5009EF301 /* blitz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz@2x.png"; path = "Images/blitz@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +268,8 @@
 		100CD4EF185669DB00995D4B /* Imported Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				10E3AE6C185A7771009EF301 /* SevenSwitch.h */,
+				10E3AE6D185A7771009EF301 /* SevenSwitch.m */,
 				102DEC4A1858D6B60066D814 /* ProgressHud */,
 				100CD4F0185669E600995D4B /* ASyncUDPSocket */,
 				100CD4E6185659DE00995D4B /* TestFlight */,
@@ -305,6 +314,8 @@
 		100CD4F818566CF500995D4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */,
+				10E3AE70185A7BC5009EF301 /* blitz@2x.png */,
 				109E31E218573A5900882DE8 /* plus_add_green.png */,
 				100CD4F618566CF200995D4B /* navTitle@2x.png */,
 			);
@@ -477,9 +488,11 @@
 				109E31E318573A5900882DE8 /* plus_add_green.png in Resources */,
 				102DEC481858D6AF0066D814 /* ProgressHUD.bundle in Resources */,
 				100CD4C9185642EB00995D4B /* Images.xcassets in Resources */,
+				10E3AE71185A7BC5009EF301 /* blitz_off@2x.png in Resources */,
 				100CD4BB185642EB00995D4B /* Main_iPhone.storyboard in Resources */,
 				100CD4B2185642EA00995D4B /* InfoPlist.strings in Resources */,
 				100CD4F718566CF200995D4B /* navTitle@2x.png in Resources */,
+				10E3AE72185A7BC5009EF301 /* blitz@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +529,7 @@
 				102DEC331858C2B60066D814 /* Settings.m in Sources */,
 				102DEC301858C2B60066D814 /* Command.m in Sources */,
 				100CD4B4185642EA00995D4B /* main.m in Sources */,
+				10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */,
 				100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */,
 				109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */,
 				102DEC2D1858C2B60066D814 /* Room.m in Sources */,
