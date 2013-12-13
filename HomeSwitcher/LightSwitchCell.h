@@ -15,6 +15,5 @@
  */
 @interface LightSwitchCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UISwitch *outletSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *outletName;
 @end

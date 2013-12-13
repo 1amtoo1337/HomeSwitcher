@@ -88,8 +88,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     LightSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    [cell.outletSwitch addTarget:self action:@selector(lightSwitchSwitched:) forControlEvents:UIControlEventTouchUpInside];
-    cell.outletSwitch.hidden = YES;
+
     // Configure the cell...
     Outlet *outlet = [self.outlets objectAtIndex:indexPath.row];
     cell.outletName.text = outlet.name;
@@ -204,39 +203,6 @@
     {
         AddOutletViewController *vc = [segue destinationViewController];
         vc.delegate = self;
-    }
-}
-
--(void) lightSwitchSwitched:(id)sender
-{
-    UISwitch *tempSwitch = (UISwitch *)sender;
-    NSIndexPath *indexPath = [self GetIndexPathFromSender:sender];
-    
-    Outlet *currentOutlet = [self.outlets objectAtIndex:indexPath.row];
-    Command *currentCommand = currentOutlet.command;
-    NSLog(@"Command on: '%@' Command off: '%@'",currentCommand.on, currentCommand.off);
-
-    if(tempSwitch.on)
-    {
-        NSLog(@"sending on command: '%@'",currentCommand.on);
-        
-        AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
-        NSLog(@"%i",[self.settings.serverPort integerValue]);
-        NSString * address = self.settings.serverIP;
-        UInt16 port = [self.settings.serverPort integerValue];
-        NSData * data = [currentCommand.on dataUsingEncoding:NSUTF8StringEncoding];
-        [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
-        
-    }else if(!tempSwitch.on)
-    {
-        NSLog(@"sending off command: '%@'",currentCommand.off);
-        
-        AsyncUdpSocket *socket=[[AsyncUdpSocket alloc]initWithDelegate:self];
-        NSString * address = self.settings.serverIP;
-        UInt16 port = [self.settings.serverPort integerValue];
-        NSData * data = [currentCommand.off dataUsingEncoding:NSUTF8StringEncoding];
-        [socket sendData:data toHost:address port:port withTimeout:-1 tag:1];
-        
     }
 }
 
