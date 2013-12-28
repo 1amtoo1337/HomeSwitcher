@@ -1,21 +1,24 @@
 //
-//  Outlet.m
+//  Lightstrip.m
 //  HomeSwitcher
 //
 //  Created by Allan Acheampong on 13.12.13.
 //  Copyright (c) 2013 Allan Adjei Acheampong. All rights reserved.
 //
 
-#import "Outlet.h"
-#import "Command.h"
+#import "Lightstrip.h"
 #import "Room.h"
 
 
-@implementation Outlet
+@implementation Lightstrip
 
 @dynamic name;
+@dynamic valueColorR;
+@dynamic valueColorG;
+@dynamic valueColorB;
 @dynamic stateOn;
-@dynamic command;
+@dynamic brightness;
+@dynamic strobe;
 @dynamic room;
 
 @end

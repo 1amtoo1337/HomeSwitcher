@@ -321,7 +321,7 @@
                           insertNewObjectForEntityForName:@"Outlet"
                           inManagedObjectContext:context];
         tOutlet.name = [arr objectAtIndex:0];
-        tOutlet.state = 0;
+        tOutlet.stateOn = NO;
         tOutlet.room = room;
         
         Command *tCommand = [NSEntityDescription

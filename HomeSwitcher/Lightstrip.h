@@ -1,5 +1,5 @@
 //
-//  Outlet.h
+//  Lightstrip.h
 //  HomeSwitcher
 //
 //  Created by Allan Acheampong on 13.12.13.
@@ -9,13 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Command, Room;
+@class Room;
 
-@interface Outlet : NSManagedObject
+@interface Lightstrip : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * valueColorR;
+@property (nonatomic, retain) NSNumber * valueColorG;
+@property (nonatomic, retain) NSNumber * valueColorB;
 @property (nonatomic, retain) NSNumber * stateOn;
-@property (nonatomic, retain) Command *command;
+@property (nonatomic, retain) NSNumber * brightness;
+@property (nonatomic, retain) NSNumber * strobe;
 @property (nonatomic, retain) Room *room;
 
 @end

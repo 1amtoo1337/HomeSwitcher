@@ -34,10 +34,6 @@
 		100CD50418567EE600995D4B /* OutletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD50318567EE600995D4B /* OutletViewController.m */; };
 		102DEBC818575B320066D814 /* OutletInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEBC718575B320066D814 /* OutletInputCell.m */; };
 		102DEC0F1858B9480066D814 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC0E1858B9480066D814 /* SettingsViewController.m */; };
-		102DEC2A1858C2B50066D814 /* Outlet.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC291858C2B50066D814 /* Outlet.m */; };
-		102DEC2D1858C2B60066D814 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC2C1858C2B60066D814 /* Room.m */; };
-		102DEC301858C2B60066D814 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC2F1858C2B60066D814 /* Command.m */; };
-		102DEC331858C2B60066D814 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC321858C2B60066D814 /* Settings.m */; };
 		102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC381858CDB30066D814 /* GCDAsyncSocket.m */; };
 		102DEC3C1858CDB30066D814 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC3A1858CDB30066D814 /* GCDAsyncUdpSocket.m */; };
 		102DEC411858CDE60066D814 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC3E1858CDE60066D814 /* AsyncSocket.m */; };
@@ -52,6 +48,12 @@
 		10E3AE71185A7BC5009EF301 /* blitz_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */; };
 		10E3AE72185A7BC5009EF301 /* blitz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE70185A7BC5009EF301 /* blitz@2x.png */; };
 		10E3AE74185A8179009EF301 /* chevron@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE73185A8179009EF301 /* chevron@2x.png */; };
+		10E3AED9185AAC14009EF301 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AED8185AAC14009EF301 /* Command.m */; };
+		10E3AEDC185AAC14009EF301 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEDB185AAC14009EF301 /* Room.m */; };
+		10E3AEDF185AAC14009EF301 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEDE185AAC14009EF301 /* Settings.m */; };
+		10E3AEE2185AAC14009EF301 /* Lightstrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEE1185AAC14009EF301 /* Lightstrip.m */; };
+		10E3AEE5185AAC14009EF301 /* Outlet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEE4185AAC14009EF301 /* Outlet.m */; };
+		10E3AEE8185B3BDC009EF301 /* CRGradientNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,14 +107,6 @@
 		102DEBC718575B320066D814 /* OutletInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutletInputCell.m; sourceTree = "<group>"; };
 		102DEC0D1858B9480066D814 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		102DEC0E1858B9480066D814 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		102DEC281858C2B50066D814 /* Outlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outlet.h; sourceTree = "<group>"; };
-		102DEC291858C2B50066D814 /* Outlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outlet.m; sourceTree = "<group>"; };
-		102DEC2B1858C2B60066D814 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
-		102DEC2C1858C2B60066D814 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
-		102DEC2E1858C2B60066D814 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
-		102DEC2F1858C2B60066D814 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
-		102DEC311858C2B60066D814 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		102DEC321858C2B60066D814 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		102DEC371858CDB20066D814 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = CocoaAsyncSocket/GCD/GCDAsyncSocket.h; sourceTree = SOURCE_ROOT; };
 		102DEC381858CDB30066D814 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = CocoaAsyncSocket/GCD/GCDAsyncSocket.m; sourceTree = SOURCE_ROOT; };
 		102DEC391858CDB30066D814 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = CocoaAsyncSocket/GCD/GCDAsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
@@ -136,6 +130,18 @@
 		10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz_off@2x.png"; path = "Images/blitz_off@2x.png"; sourceTree = "<group>"; };
 		10E3AE70185A7BC5009EF301 /* blitz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz@2x.png"; path = "Images/blitz@2x.png"; sourceTree = "<group>"; };
 		10E3AE73185A8179009EF301 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevron@2x.png"; path = "Images/chevron@2x.png"; sourceTree = "<group>"; };
+		10E3AED7185AAC14009EF301 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
+		10E3AED8185AAC14009EF301 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
+		10E3AEDA185AAC14009EF301 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		10E3AEDB185AAC14009EF301 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		10E3AEDD185AAC14009EF301 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		10E3AEDE185AAC14009EF301 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		10E3AEE0185AAC14009EF301 /* Lightstrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lightstrip.h; sourceTree = "<group>"; };
+		10E3AEE1185AAC14009EF301 /* Lightstrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lightstrip.m; sourceTree = "<group>"; };
+		10E3AEE3185AAC14009EF301 /* Outlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outlet.h; sourceTree = "<group>"; };
+		10E3AEE4185AAC14009EF301 /* Outlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outlet.m; sourceTree = "<group>"; };
+		10E3AEE6185B3BDC009EF301 /* CRGradientNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGradientNavigationBar.h; sourceTree = "<group>"; };
+		10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGradientNavigationBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +215,16 @@
 				100CD4F218566A0300995D4B /* iPad */,
 				100CD4EE185669B000995D4B /* Boilerplate */,
 				100CD4C8185642EB00995D4B /* Images.xcassets */,
+				10E3AED7185AAC14009EF301 /* Command.h */,
+				10E3AEE3185AAC14009EF301 /* Outlet.h */,
+				10E3AEE4185AAC14009EF301 /* Outlet.m */,
+				10E3AEE0185AAC14009EF301 /* Lightstrip.h */,
+				10E3AEE1185AAC14009EF301 /* Lightstrip.m */,
+				10E3AEDD185AAC14009EF301 /* Settings.h */,
+				10E3AEDE185AAC14009EF301 /* Settings.m */,
+				10E3AEDA185AAC14009EF301 /* Room.h */,
+				10E3AEDB185AAC14009EF301 /* Room.m */,
+				10E3AED8185AAC14009EF301 /* Command.m */,
 				100CD4BF185642EB00995D4B /* HomeSwitcher.xcdatamodeld */,
 				100CD4AE185642EA00995D4B /* Supporting Files */,
 			);
@@ -270,6 +286,8 @@
 		100CD4EF185669DB00995D4B /* Imported Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				10E3AEE6185B3BDC009EF301 /* CRGradientNavigationBar.h */,
+				10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */,
 				10E3AE6C185A7771009EF301 /* SevenSwitch.h */,
 				10E3AE6D185A7771009EF301 /* SevenSwitch.m */,
 				102DEC4A1858D6B60066D814 /* ProgressHud */,
@@ -328,14 +346,6 @@
 		1023A7011856BCA400F55AC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				102DEC311858C2B60066D814 /* Settings.h */,
-				102DEC321858C2B60066D814 /* Settings.m */,
-				102DEC2E1858C2B60066D814 /* Command.h */,
-				102DEC2F1858C2B60066D814 /* Command.m */,
-				102DEC2B1858C2B60066D814 /* Room.h */,
-				102DEC2C1858C2B60066D814 /* Room.m */,
-				102DEC281858C2B50066D814 /* Outlet.h */,
-				102DEC291858C2B50066D814 /* Outlet.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -518,25 +528,27 @@
 				102DEBC818575B320066D814 /* OutletInputCell.m in Sources */,
 				100CD4C7185642EB00995D4B /* DetailViewController.m in Sources */,
 				102DEC0F1858B9480066D814 /* SettingsViewController.m in Sources */,
-				102DEC2A1858C2B50066D814 /* Outlet.m in Sources */,
 				100CD4C4185642EB00995D4B /* MasterViewController.m in Sources */,
+				10E3AEDC185AAC14009EF301 /* Room.m in Sources */,
 				100CD4F518566A8400995D4B /* ListViewController.m in Sources */,
 				102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */,
 				102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */,
+				10E3AEE5185AAC14009EF301 /* Outlet.m in Sources */,
 				102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */,
 				100CD4B8185642EB00995D4B /* AppDelegate.m in Sources */,
 				109E31DE1856C7E900882DE8 /* InputCell.m in Sources */,
 				100CD4C1185642EB00995D4B /* HomeSwitcher.xcdatamodeld in Sources */,
+				10E3AEDF185AAC14009EF301 /* Settings.m in Sources */,
 				100CD50418567EE600995D4B /* OutletViewController.m in Sources */,
 				102DEC411858CDE60066D814 /* AsyncSocket.m in Sources */,
 				102DEC3C1858CDB30066D814 /* GCDAsyncUdpSocket.m in Sources */,
-				102DEC331858C2B60066D814 /* Settings.m in Sources */,
-				102DEC301858C2B60066D814 /* Command.m in Sources */,
+				10E3AEE2185AAC14009EF301 /* Lightstrip.m in Sources */,
 				100CD4B4185642EA00995D4B /* main.m in Sources */,
+				10E3AED9185AAC14009EF301 /* Command.m in Sources */,
 				10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */,
 				100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */,
 				109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */,
-				102DEC2D1858C2B60066D814 /* Room.m in Sources */,
+				10E3AEE8185B3BDC009EF301 /* CRGradientNavigationBar.m in Sources */,
 				109E31E818573EFD00882DE8 /* AddOutletViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
