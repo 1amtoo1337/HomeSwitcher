@@ -314,6 +314,7 @@
                   insertNewObjectForEntityForName:@"Room"
                   inManagedObjectContext:context];
     [room setValue:roomName forKey:@"name"];
+    room.floor = self.floor; //#bug# >
     
     for (NSArray *arr in self.outlets)
     {

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Command" representedClassName="Command" syncable="YES">
         <attribute name="off" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="on" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="outlet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Outlet" inverseName="command" inverseEntity="Outlet" syncable="YES"/>
+    </entity>
+    <entity name="Floor" representedClassName="Floor" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Room" inverseName="floor" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Lightstrip" representedClassName="Lightstrip" syncable="YES">
         <attribute name="brightness" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -18,11 +23,14 @@
     <entity name="Outlet" representedClassName="Outlet" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stateOn" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="command" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Command" inverseName="outlet" inverseEntity="Command" syncable="YES"/>
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="outlets" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="floor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="rooms" inverseEntity="Floor" syncable="YES"/>
         <relationship name="lightstrip" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Lightstrip" inverseName="room" inverseEntity="Lightstrip" syncable="YES"/>
         <relationship name="outlets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Outlet" inverseName="room" inverseEntity="Outlet" syncable="YES"/>
     </entity>
@@ -36,10 +44,11 @@
         <attribute name="webserverPort" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Command" positionX="295" positionY="99" width="128" height="90"/>
-        <element name="Outlet" positionX="124" positionY="93" width="128" height="103"/>
-        <element name="Room" positionX="-72" positionY="153" width="128" height="88"/>
-        <element name="Settings" positionX="-72" positionY="-36" width="128" height="135"/>
-        <element name="Lightstrip" positionX="160" positionY="216" width="128" height="163"/>
+        <element name="Command" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Lightstrip" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Outlet" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Room" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Settings" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Floor" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

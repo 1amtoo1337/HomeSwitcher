@@ -1,5 +1,5 @@
 //
-//  Outlet.h
+//  Floor.h
 //  HomeSwitcher
 //
 //  Created by Allan Acheampong on 29.12.13.
@@ -9,14 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Command, Room;
+@class Room;
 
-@interface Outlet : NSManagedObject
+@interface Floor : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * stateOn;
 @property (nonatomic, retain) NSString * timestamp;
-@property (nonatomic, retain) Command *command;
-@property (nonatomic, retain) Room *room;
+@property (nonatomic, retain) NSSet *rooms;
+@end
+
+@interface Floor (CoreDataGeneratedAccessors)
+
+- (void)addRoomsObject:(Room *)value;
+- (void)removeRoomsObject:(Room *)value;
+- (void)addRooms:(NSSet *)values;
+- (void)removeRooms:(NSSet *)values;
 
 @end

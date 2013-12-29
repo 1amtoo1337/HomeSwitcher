@@ -7,15 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Floor.h"
 #import "AddRoomViewController.h"
 
-@interface ListViewController : UITableViewController<NSFetchedResultsControllerDelegate,AddRoomDelegate>
+@interface RoomListViewController : UITableViewController<NSFetchedResultsControllerDelegate,AddRoomDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+@property (strong, nonatomic) Floor *floor;
+
 - (IBAction)reloadData:(id)sender;
 
+- (IBAction)addBarButtonPressed:(id)sender;
 
 
 @end

@@ -6,18 +6,19 @@
 //  Copyright (c) 2013 Allan Adjei Acheampong. All rights reserved.
 //
 
-#import "OutletViewController.h"
+#import "OutletListViewController.h"
 #import "SevenSwitch.h"
 #import "AsyncUdpSocket.h"
 #include "Outlet.h"
+#import "ProgressHUD.h"
 
-@interface OutletViewController ()
+@interface OutletListViewController ()
 
 @property (strong, nonatomic) NSArray *outlets;
 @property (strong, nonatomic) AsyncUdpSocket *socket;
 @end
 
-@implementation OutletViewController
+@implementation OutletListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -192,6 +193,7 @@
     }
     
     //reload the current room from core data into the self.room
+    [ProgressHUD showSuccess:@"Outlet added"];
     
     [self.tableView reloadData];
 

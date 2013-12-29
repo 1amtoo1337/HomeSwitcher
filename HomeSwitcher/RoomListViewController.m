@@ -6,21 +6,19 @@
 //  Copyright (c) 2013 Allan Adjei Acheampong. All rights reserved.
 //
 
-#import "ListViewController.h"
-#import "OutletViewController.h"
+#import "RoomListViewController.h"
+#import "OutletListViewController.h"
 #import "AddRoomViewController.h"
 #import "Room.h"
-#import "Outlet.h"
-#import "Command.h"
 #import "ProgressHUD.h"
 
-@interface ListViewController ()
+@interface RoomListViewController ()
 
 @property (nonatomic, strong) NSArray *rooms;
 
 @end
 
-@implementation ListViewController
+@implementation RoomListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,6 +46,8 @@
     self.managedObjectContext = delegate.managedObjectContext;
 
     [self fetchRoomsFromCoreData];
+    
+    NSLog(@"floor: %@",self.floor.name);
     
 }
 
@@ -147,7 +147,7 @@
 {
     if([[segue identifier] isEqualToString:@"listToDetailSegue"])
     {
-        OutletViewController *vc = [segue destinationViewController];
+        OutletListViewController *vc = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
         Room *room = [self.rooms objectAtIndex:indexPath.row];
@@ -158,12 +158,13 @@
     {
         AddRoomViewController *vc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
        
+        vc.floor = self.floor;
         vc.delegate = self;
     }
     
 }
 
-#pragma mark - Custom Implementation
+#pragma mark - Custom Delegate Implementation
 
 -(void)didFinishRoomInput:(AddRoomViewController *)controller
 {
@@ -173,10 +174,47 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - Custom Implementation
+
 
 - (IBAction)reloadData:(id)sender
 {
     [self.tableView reloadData];
+}
+
+- (IBAction)addBarButtonPressed:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Create Floor", @"Create Room", nil];
+    
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showFromBarButtonItem:sender animated:YES];
+    
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self addFloor];
+    }else if (buttonIndex == 1)
+    {
+        [self addRoom];
+    }
+}
+
+-(void)addFloor
+{
+    UIViewController *vc=[[self storyboard] instantiateViewControllerWithIdentifier:@"AddFloorViewController"];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    
+}
+
+
+-(void)addRoom
+{
+    
+        UIViewController *vc=[[self storyboard] instantiateViewControllerWithIdentifier:@"AddRoomViewController"];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    
 }
 
 -(void)fetchRoomsFromCoreData
@@ -184,6 +222,10 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"floor == %@", self.floor];
+
+    [fetchRequest setPredicate:predicate];
+    
     [fetchRequest setEntity:entity];
     NSError *error;
     

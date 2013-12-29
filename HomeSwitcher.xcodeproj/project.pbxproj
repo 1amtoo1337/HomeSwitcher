@@ -28,10 +28,10 @@
 		100CD4DD185642EB00995D4B /* HomeSwitcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD4DC185642EB00995D4B /* HomeSwitcherTests.m */; };
 		100CD4EB185659F700995D4B /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100CD4E7185659F700995D4B /* libTestFlight.a */; };
 		100CD4ED18565A2B00995D4B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 100CD4EC18565A2B00995D4B /* libz.dylib */; };
-		100CD4F518566A8400995D4B /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD4F418566A8400995D4B /* ListViewController.m */; };
+		100CD4F518566A8400995D4B /* RoomListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD4F418566A8400995D4B /* RoomListViewController.m */; };
 		100CD4F718566CF200995D4B /* navTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 100CD4F618566CF200995D4B /* navTitle@2x.png */; };
 		100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD4FD1856703000995D4B /* AddRoomViewController.m */; };
-		100CD50418567EE600995D4B /* OutletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD50318567EE600995D4B /* OutletViewController.m */; };
+		100CD50418567EE600995D4B /* OutletListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100CD50318567EE600995D4B /* OutletListViewController.m */; };
 		102DEBC818575B320066D814 /* OutletInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEBC718575B320066D814 /* OutletInputCell.m */; };
 		102DEC0F1858B9480066D814 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC0E1858B9480066D814 /* SettingsViewController.m */; };
 		102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC381858CDB30066D814 /* GCDAsyncSocket.m */; };
@@ -44,15 +44,18 @@
 		109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E01856DA5400882DE8 /* LightSwitchCell.m */; };
 		109E31E318573A5900882DE8 /* plus_add_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 109E31E218573A5900882DE8 /* plus_add_green.png */; };
 		109E31E818573EFD00882DE8 /* AddOutletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E718573EFD00882DE8 /* AddOutletViewController.m */; };
+		10A04B39186FC5A00070FE61 /* FloorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B38186FC5A00070FE61 /* FloorListViewController.m */; };
+		10A04B3C186FC8EA0070FE61 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B3B186FC8EA0070FE61 /* Command.m */; };
+		10A04B3F186FC8EB0070FE61 /* Outlet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B3E186FC8EB0070FE61 /* Outlet.m */; };
+		10A04B42186FC8EB0070FE61 /* Lightstrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B41186FC8EB0070FE61 /* Lightstrip.m */; };
+		10A04B45186FC8EB0070FE61 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B44186FC8EB0070FE61 /* Room.m */; };
+		10A04B48186FC8EB0070FE61 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B47186FC8EB0070FE61 /* Settings.m */; };
+		10A04B4B186FC8EB0070FE61 /* Floor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B4A186FC8EB0070FE61 /* Floor.m */; };
+		10A04B4E186FC9610070FE61 /* AddFloorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B4D186FC9610070FE61 /* AddFloorViewController.m */; };
 		10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AE6D185A7771009EF301 /* SevenSwitch.m */; };
 		10E3AE71185A7BC5009EF301 /* blitz_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */; };
 		10E3AE72185A7BC5009EF301 /* blitz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE70185A7BC5009EF301 /* blitz@2x.png */; };
 		10E3AE74185A8179009EF301 /* chevron@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE73185A8179009EF301 /* chevron@2x.png */; };
-		10E3AED9185AAC14009EF301 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AED8185AAC14009EF301 /* Command.m */; };
-		10E3AEDC185AAC14009EF301 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEDB185AAC14009EF301 /* Room.m */; };
-		10E3AEDF185AAC14009EF301 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEDE185AAC14009EF301 /* Settings.m */; };
-		10E3AEE2185AAC14009EF301 /* Lightstrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEE1185AAC14009EF301 /* Lightstrip.m */; };
-		10E3AEE5185AAC14009EF301 /* Outlet.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEE4185AAC14009EF301 /* Outlet.m */; };
 		10E3AEE8185B3BDC009EF301 /* CRGradientNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */; };
 /* End PBXBuildFile section */
 
@@ -96,13 +99,13 @@
 		100CD4E9185659F700995D4B /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
 		100CD4EA185659F700995D4B /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		100CD4EC18565A2B00995D4B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		100CD4F318566A8400995D4B /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		100CD4F418566A8400995D4B /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		100CD4F318566A8400995D4B /* RoomListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomListViewController.h; sourceTree = "<group>"; };
+		100CD4F418566A8400995D4B /* RoomListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListViewController.m; sourceTree = "<group>"; };
 		100CD4F618566CF200995D4B /* navTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navTitle@2x.png"; sourceTree = "<group>"; };
 		100CD4FC1856703000995D4B /* AddRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRoomViewController.h; sourceTree = "<group>"; };
 		100CD4FD1856703000995D4B /* AddRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRoomViewController.m; sourceTree = "<group>"; };
-		100CD50218567EE600995D4B /* OutletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutletViewController.h; sourceTree = "<group>"; };
-		100CD50318567EE600995D4B /* OutletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutletViewController.m; sourceTree = "<group>"; };
+		100CD50218567EE600995D4B /* OutletListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutletListViewController.h; sourceTree = "<group>"; };
+		100CD50318567EE600995D4B /* OutletListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutletListViewController.m; sourceTree = "<group>"; };
 		102DEBC618575B320066D814 /* OutletInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutletInputCell.h; sourceTree = "<group>"; };
 		102DEBC718575B320066D814 /* OutletInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutletInputCell.m; sourceTree = "<group>"; };
 		102DEC0D1858B9480066D814 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -125,21 +128,27 @@
 		109E31E218573A5900882DE8 /* plus_add_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_add_green.png; sourceTree = "<group>"; };
 		109E31E618573EFD00882DE8 /* AddOutletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOutletViewController.h; sourceTree = "<group>"; };
 		109E31E718573EFD00882DE8 /* AddOutletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOutletViewController.m; sourceTree = "<group>"; };
+		10A04B37186FC5A00070FE61 /* FloorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorListViewController.h; sourceTree = "<group>"; };
+		10A04B38186FC5A00070FE61 /* FloorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorListViewController.m; sourceTree = "<group>"; };
+		10A04B3A186FC8EA0070FE61 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
+		10A04B3B186FC8EA0070FE61 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
+		10A04B3D186FC8EB0070FE61 /* Outlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outlet.h; sourceTree = "<group>"; };
+		10A04B3E186FC8EB0070FE61 /* Outlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outlet.m; sourceTree = "<group>"; };
+		10A04B40186FC8EB0070FE61 /* Lightstrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lightstrip.h; sourceTree = "<group>"; };
+		10A04B41186FC8EB0070FE61 /* Lightstrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lightstrip.m; sourceTree = "<group>"; };
+		10A04B43186FC8EB0070FE61 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		10A04B44186FC8EB0070FE61 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		10A04B46186FC8EB0070FE61 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		10A04B47186FC8EB0070FE61 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		10A04B49186FC8EB0070FE61 /* Floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floor.h; sourceTree = "<group>"; };
+		10A04B4A186FC8EB0070FE61 /* Floor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Floor.m; sourceTree = "<group>"; };
+		10A04B4C186FC9610070FE61 /* AddFloorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFloorViewController.h; sourceTree = "<group>"; };
+		10A04B4D186FC9610070FE61 /* AddFloorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFloorViewController.m; sourceTree = "<group>"; };
 		10E3AE6C185A7771009EF301 /* SevenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenSwitch.h; sourceTree = "<group>"; };
 		10E3AE6D185A7771009EF301 /* SevenSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenSwitch.m; sourceTree = "<group>"; };
 		10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz_off@2x.png"; path = "Images/blitz_off@2x.png"; sourceTree = "<group>"; };
 		10E3AE70185A7BC5009EF301 /* blitz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz@2x.png"; path = "Images/blitz@2x.png"; sourceTree = "<group>"; };
 		10E3AE73185A8179009EF301 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevron@2x.png"; path = "Images/chevron@2x.png"; sourceTree = "<group>"; };
-		10E3AED7185AAC14009EF301 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
-		10E3AED8185AAC14009EF301 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
-		10E3AEDA185AAC14009EF301 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
-		10E3AEDB185AAC14009EF301 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
-		10E3AEDD185AAC14009EF301 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		10E3AEDE185AAC14009EF301 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
-		10E3AEE0185AAC14009EF301 /* Lightstrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lightstrip.h; sourceTree = "<group>"; };
-		10E3AEE1185AAC14009EF301 /* Lightstrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lightstrip.m; sourceTree = "<group>"; };
-		10E3AEE3185AAC14009EF301 /* Outlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outlet.h; sourceTree = "<group>"; };
-		10E3AEE4185AAC14009EF301 /* Outlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outlet.m; sourceTree = "<group>"; };
 		10E3AEE6185B3BDC009EF301 /* CRGradientNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGradientNavigationBar.h; sourceTree = "<group>"; };
 		10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGradientNavigationBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,17 +224,19 @@
 				100CD4F218566A0300995D4B /* iPad */,
 				100CD4EE185669B000995D4B /* Boilerplate */,
 				100CD4C8185642EB00995D4B /* Images.xcassets */,
-				10E3AED7185AAC14009EF301 /* Command.h */,
-				10E3AEE3185AAC14009EF301 /* Outlet.h */,
-				10E3AEE4185AAC14009EF301 /* Outlet.m */,
-				10E3AEE0185AAC14009EF301 /* Lightstrip.h */,
-				10E3AEE1185AAC14009EF301 /* Lightstrip.m */,
-				10E3AEDD185AAC14009EF301 /* Settings.h */,
-				10E3AEDE185AAC14009EF301 /* Settings.m */,
-				10E3AEDA185AAC14009EF301 /* Room.h */,
-				10E3AEDB185AAC14009EF301 /* Room.m */,
-				10E3AED8185AAC14009EF301 /* Command.m */,
 				100CD4BF185642EB00995D4B /* HomeSwitcher.xcdatamodeld */,
+				10A04B3A186FC8EA0070FE61 /* Command.h */,
+				10A04B3B186FC8EA0070FE61 /* Command.m */,
+				10A04B3D186FC8EB0070FE61 /* Outlet.h */,
+				10A04B3E186FC8EB0070FE61 /* Outlet.m */,
+				10A04B40186FC8EB0070FE61 /* Lightstrip.h */,
+				10A04B41186FC8EB0070FE61 /* Lightstrip.m */,
+				10A04B43186FC8EB0070FE61 /* Room.h */,
+				10A04B44186FC8EB0070FE61 /* Room.m */,
+				10A04B46186FC8EB0070FE61 /* Settings.h */,
+				10A04B47186FC8EB0070FE61 /* Settings.m */,
+				10A04B49186FC8EB0070FE61 /* Floor.h */,
+				10A04B4A186FC8EB0070FE61 /* Floor.m */,
 				100CD4AE185642EA00995D4B /* Supporting Files */,
 			);
 			path = HomeSwitcher;
@@ -392,10 +403,12 @@
 		109E31E418573EBB00882DE8 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				100CD4F318566A8400995D4B /* ListViewController.h */,
-				100CD4F418566A8400995D4B /* ListViewController.m */,
-				100CD50218567EE600995D4B /* OutletViewController.h */,
-				100CD50318567EE600995D4B /* OutletViewController.m */,
+				10A04B37186FC5A00070FE61 /* FloorListViewController.h */,
+				10A04B38186FC5A00070FE61 /* FloorListViewController.m */,
+				100CD4F318566A8400995D4B /* RoomListViewController.h */,
+				100CD4F418566A8400995D4B /* RoomListViewController.m */,
+				100CD50218567EE600995D4B /* OutletListViewController.h */,
+				100CD50318567EE600995D4B /* OutletListViewController.m */,
 				102DEC341858C66E0066D814 /* Cells */,
 			);
 			name = List;
@@ -404,6 +417,8 @@
 		109E31E518573ECB00882DE8 /* Input */ = {
 			isa = PBXGroup;
 			children = (
+				10A04B4C186FC9610070FE61 /* AddFloorViewController.h */,
+				10A04B4D186FC9610070FE61 /* AddFloorViewController.m */,
 				100CD4FC1856703000995D4B /* AddRoomViewController.h */,
 				100CD4FD1856703000995D4B /* AddRoomViewController.m */,
 				109E31E618573EFD00882DE8 /* AddOutletViewController.h */,
@@ -525,28 +540,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A04B45186FC8EB0070FE61 /* Room.m in Sources */,
 				102DEBC818575B320066D814 /* OutletInputCell.m in Sources */,
+				10A04B48186FC8EB0070FE61 /* Settings.m in Sources */,
 				100CD4C7185642EB00995D4B /* DetailViewController.m in Sources */,
 				102DEC0F1858B9480066D814 /* SettingsViewController.m in Sources */,
 				100CD4C4185642EB00995D4B /* MasterViewController.m in Sources */,
-				10E3AEDC185AAC14009EF301 /* Room.m in Sources */,
-				100CD4F518566A8400995D4B /* ListViewController.m in Sources */,
+				100CD4F518566A8400995D4B /* RoomListViewController.m in Sources */,
 				102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */,
+				10A04B39186FC5A00070FE61 /* FloorListViewController.m in Sources */,
 				102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */,
-				10E3AEE5185AAC14009EF301 /* Outlet.m in Sources */,
+				10A04B42186FC8EB0070FE61 /* Lightstrip.m in Sources */,
 				102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */,
 				100CD4B8185642EB00995D4B /* AppDelegate.m in Sources */,
 				109E31DE1856C7E900882DE8 /* InputCell.m in Sources */,
 				100CD4C1185642EB00995D4B /* HomeSwitcher.xcdatamodeld in Sources */,
-				10E3AEDF185AAC14009EF301 /* Settings.m in Sources */,
-				100CD50418567EE600995D4B /* OutletViewController.m in Sources */,
+				100CD50418567EE600995D4B /* OutletListViewController.m in Sources */,
 				102DEC411858CDE60066D814 /* AsyncSocket.m in Sources */,
+				10A04B4E186FC9610070FE61 /* AddFloorViewController.m in Sources */,
 				102DEC3C1858CDB30066D814 /* GCDAsyncUdpSocket.m in Sources */,
-				10E3AEE2185AAC14009EF301 /* Lightstrip.m in Sources */,
 				100CD4B4185642EA00995D4B /* main.m in Sources */,
-				10E3AED9185AAC14009EF301 /* Command.m in Sources */,
 				10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */,
+				10A04B3C186FC8EA0070FE61 /* Command.m in Sources */,
+				10A04B4B186FC8EB0070FE61 /* Floor.m in Sources */,
 				100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */,
+				10A04B3F186FC8EB0070FE61 /* Outlet.m in Sources */,
 				109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */,
 				10E3AEE8185B3BDC009EF301 /* CRGradientNavigationBar.m in Sources */,
 				109E31E818573EFD00882DE8 /* AddOutletViewController.m in Sources */,

@@ -2,7 +2,7 @@
 //  Room.m
 //  HomeSwitcher
 //
-//  Created by Allan Acheampong on 13.12.13.
+//  Created by Allan Acheampong on 29.12.13.
 //  Copyright (c) 2013 Allan Adjei Acheampong. All rights reserved.
 //
 
@@ -14,7 +14,9 @@
 @implementation Room
 
 @dynamic name;
-@dynamic outlets;
+@dynamic timestamp;
 @dynamic lightstrip;
+@dynamic outlets;
+@dynamic floor;
 
 @end

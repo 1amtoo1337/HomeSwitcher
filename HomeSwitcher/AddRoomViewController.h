@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AddOutletViewController.h"
-
+#import "Floor.h"
 
 @class AddRoomViewController;
 
@@ -25,6 +25,8 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (strong, nonatomic) Floor *floor;
 
 - (IBAction)validateInput:(UIBarButtonItem *)sender;
 - (IBAction)dismissAddView:(UIBarButtonItem *)sender;

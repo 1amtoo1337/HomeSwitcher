@@ -12,7 +12,7 @@
 #import "Room.h"
 #import "Settings.h"
 
-@interface OutletViewController : UITableViewController<NSFetchedResultsControllerDelegate, AddOutletDelegate>
+@interface OutletListViewController : UITableViewController<NSFetchedResultsControllerDelegate, AddOutletDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
