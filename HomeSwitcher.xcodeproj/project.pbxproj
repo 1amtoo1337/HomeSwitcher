@@ -52,6 +52,8 @@
 		10A04B48186FC8EB0070FE61 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B47186FC8EB0070FE61 /* Settings.m */; };
 		10A04B4B186FC8EB0070FE61 /* Floor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B4A186FC8EB0070FE61 /* Floor.m */; };
 		10A04B4E186FC9610070FE61 /* AddFloorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B4D186FC9610070FE61 /* AddFloorViewController.m */; };
+		10A04B55186FE8CF0070FE61 /* RoomListViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B54186FE8CF0070FE61 /* RoomListViewController_iPad.m */; };
+		10A04B5A186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A04B59186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.m */; };
 		10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AE6D185A7771009EF301 /* SevenSwitch.m */; };
 		10E3AE71185A7BC5009EF301 /* blitz_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */; };
 		10E3AE72185A7BC5009EF301 /* blitz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE70185A7BC5009EF301 /* blitz@2x.png */; };
@@ -144,6 +146,10 @@
 		10A04B4A186FC8EB0070FE61 /* Floor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Floor.m; sourceTree = "<group>"; };
 		10A04B4C186FC9610070FE61 /* AddFloorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFloorViewController.h; sourceTree = "<group>"; };
 		10A04B4D186FC9610070FE61 /* AddFloorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFloorViewController.m; sourceTree = "<group>"; };
+		10A04B53186FE8CF0070FE61 /* RoomListViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomListViewController_iPad.h; sourceTree = "<group>"; };
+		10A04B54186FE8CF0070FE61 /* RoomListViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListViewController_iPad.m; sourceTree = "<group>"; };
+		10A04B58186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFloorAndRoomViewController_iPad.h; sourceTree = "<group>"; };
+		10A04B59186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFloorAndRoomViewController_iPad.m; sourceTree = "<group>"; };
 		10E3AE6C185A7771009EF301 /* SevenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenSwitch.h; sourceTree = "<group>"; };
 		10E3AE6D185A7771009EF301 /* SevenSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenSwitch.m; sourceTree = "<group>"; };
 		10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz_off@2x.png"; path = "Images/blitz_off@2x.png"; sourceTree = "<group>"; };
@@ -337,6 +343,8 @@
 		100CD4F218566A0300995D4B /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				10A04B57186FF0BC0070FE61 /* Input */,
+				10A04B4F186FE8660070FE61 /* List */,
 				100CD4BC185642EB00995D4B /* Main_iPad.storyboard */,
 			);
 			name = iPad;
@@ -424,6 +432,24 @@
 				109E31E618573EFD00882DE8 /* AddOutletViewController.h */,
 				109E31E718573EFD00882DE8 /* AddOutletViewController.m */,
 				102DEC351858C67C0066D814 /* Cells */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
+		10A04B4F186FE8660070FE61 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				10A04B53186FE8CF0070FE61 /* RoomListViewController_iPad.h */,
+				10A04B54186FE8CF0070FE61 /* RoomListViewController_iPad.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		10A04B57186FF0BC0070FE61 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				10A04B58186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.h */,
+				10A04B59186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.m */,
 			);
 			name = Input;
 			sourceTree = "<group>";
@@ -549,6 +575,8 @@
 				100CD4F518566A8400995D4B /* RoomListViewController.m in Sources */,
 				102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */,
 				10A04B39186FC5A00070FE61 /* FloorListViewController.m in Sources */,
+				10A04B55186FE8CF0070FE61 /* RoomListViewController_iPad.m in Sources */,
+				10A04B5A186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.m in Sources */,
 				102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */,
 				10A04B42186FC8EB0070FE61 /* Lightstrip.m in Sources */,
 				102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */,
