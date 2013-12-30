@@ -345,6 +345,13 @@
     }
     
     //[self.delegate didFinishRoomInput:self]; //kasius knaktus <--- must be changed to a custom delegate to have the floor/room table update
+    
+    //[self.delegate didFinishRoomInput];
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"didFinishRoomInputNotification"
+     object:self];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

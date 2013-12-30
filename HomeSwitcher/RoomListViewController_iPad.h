@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddFloorAndRoomViewController_iPad.h"
 
-@interface RoomListViewController_iPad : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface RoomListViewController_iPad : UITableViewController<NSFetchedResultsControllerDelegate, AddFloorIpadDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

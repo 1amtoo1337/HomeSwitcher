@@ -47,6 +47,11 @@
     
     [self fetchFloorsFromCoreData];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didFinishRoomInput)
+                                                 name:@"didFinishRoomInputNotification"
+                                               object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,6 +110,10 @@
     NSError *error;
     
     self.floors = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    
+    [self.tableView reloadData];
+    
 }
 
 
@@ -114,7 +123,6 @@
     
     //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     UINavigationController *vc=[[self storyboard] instantiateViewControllerWithIdentifier:@"floorAndRoomAddNavController"];
-        
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
 
     [self.navigationController presentViewController:vc animated:YES completion:nil];
@@ -136,5 +144,10 @@
 -(void)doneButtonClicked
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)didFinishRoomInput
+{
+    [self fetchFloorsFromCoreData];
 }
 @end
