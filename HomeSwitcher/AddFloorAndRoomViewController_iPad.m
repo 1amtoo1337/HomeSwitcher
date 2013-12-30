@@ -7,8 +7,12 @@
 //
 
 #import "AddFloorAndRoomViewController_iPad.h"
-#import "InputCell_iPad.h"
-
+#import "AddRoomViewController_iPad.h"
+#import "ProgressHUD.h"
+#import "Floor.h"
+#import "Room.h"
+#import "Outlet.h"
+#import "Command.h"
 @interface AddFloorAndRoomViewController_iPad ()
 
 @property (strong, nonatomic) NSArray *sections;
@@ -34,6 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.textEntered = NO;
+    self.rooms = [NSMutableArray array];
 
     self.sections = [[NSArray alloc] initWithObjects:@"Floor", @"Room", nil];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(cancelButtonClicked)];
@@ -41,6 +48,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered  target:self action:@selector(doneButtonClicked)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     self.title = @"Add Floor";
+    
+    //core data
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = delegate.managedObjectContext;
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,17 +76,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    
-    if (section == 0)
-    {
-        //floor
-        return 2;
-    }
-    else if (section == 1)
-    {
-        //room s
-        return 1;
-    }
+    if(section == 0) return 2; //floor
+    if(section == 1) return self.rooms.count; //room s
     
     return 1;
 }
@@ -138,15 +140,14 @@
         
         cell.accessoryType = UITableViewCellAccessoryNone;
         
-    }else if(indexPath.section == 1)
-    {
-//        cell.textField.text = [[self.outlets objectAtIndex:indexPath.row] objectAtIndex:0];
-//        cell.textField.enabled = NO;
-        cell.textLabel.text = @"some Room";
-
-        
-        
     }
+    else if(indexPath.section == 1)
+    {
+        textField.text = [[self.rooms objectAtIndex:indexPath.row] objectAtIndex:0]; //roomName
+        textField.enabled = NO;
+        [cell addSubview:textField];
+    }
+    
 
 //    switch(indexPath.section)
 //    {
@@ -240,6 +241,26 @@
     
 }
 
+#pragma mark - Segue Stuff
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"floorRoomAddSegue"])
+    {
+        AddRoomViewController_iPad *vc = [segue destinationViewController];
+        vc.delegate = self;
+        //vc.importOutlet = [self.outlets objectAtIndex:indexPath.row];
+        
+    }
+}
+
+#pragma mark - Room Delegate
+-(void)didFinishRoomInput:(AddRoomViewController_iPad *)controller room:(NSArray *)roomArray
+{
+    [self.rooms addObject:roomArray];
+    [ProgressHUD showSuccess:@"Room added"];
+    [self.tableView reloadData];
+}
 
 
 @end

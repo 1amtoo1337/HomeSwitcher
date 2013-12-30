@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Outlet.h"
-#import "Command.h"
 
 @class AddOutletViewController_iPad;
 
 @protocol AddOutletIpadDelegate <NSObject>
 
--(void)didSelectWith:(AddOutletViewController_iPad *)controller outlet:(NSArray *)outlet;
+-(void)didSelectWith:(AddOutletViewController_iPad *)controller outlets:(NSArray *)theOutlets;
 @end
 
 @interface AddOutletViewController_iPad : UITableViewController<UITextFieldDelegate>

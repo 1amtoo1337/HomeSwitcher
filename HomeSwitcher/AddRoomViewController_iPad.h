@@ -8,17 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AddOutletViewController_iPad.h"
-#import "ProgressHUD.h"
-#import "Floor.h"
-#import "Room.h"
-#import "Outlet.h"
-#import "Command.h"
 
 @class AddRoomViewController_iPad;
 
 @protocol AddRoomIpadDelegate <NSObject>
 
--(void)didFinishRoomInput:(AddRoomViewController_iPad *)controller;
+-(void)didFinishRoomInput:(AddRoomViewController_iPad *)controller room:(NSArray *)roomArray;
 
 @end
 
@@ -28,7 +23,5 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-@property (strong, nonatomic) Floor *floor;
 
 @end

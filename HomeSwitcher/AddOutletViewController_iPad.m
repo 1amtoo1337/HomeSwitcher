@@ -183,7 +183,7 @@
          #task#
          */
         NSArray *myOutlet = [NSArray arrayWithObjects:outletName, commandOn, commandOff, nil];
-        [self.delegate didSelectWith:self outlet:myOutlet];
+        [self.delegate didSelectWith:self outlets:myOutlet];
         
         [self.navigationController popViewControllerAnimated:YES];
     }

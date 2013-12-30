@@ -7,6 +7,7 @@
 //
 
 #import "AddRoomViewController_iPad.h"
+#import "ProgressHUD.h"
 
 @interface AddRoomViewController_iPad ()
 
@@ -213,10 +214,10 @@
 }
 
 #pragma mark - Outlet Delegate
--(void)didSelectWith:(AddOutletViewController_iPad *)controller outlet:(NSArray *)outlet
+-(void)didSelectWith:(AddOutletViewController_iPad *)controller outlets:(NSArray *)theOutlets
 {
     
-    [self.outlets addObject:outlet];
+    [self.outlets addObject:theOutlets];
     [ProgressHUD showSuccess:@"Outlet added"];
     [self.tableView reloadData];
     
@@ -269,8 +270,9 @@
         
     }else if(![roomName isEqualToString:@""] && self.outlets.count != 0)
     {
+        NSArray *arr = [[NSArray alloc] initWithObjects:roomName, self.outlets, nil]; //room: name + outlets
         //[self saveData];
-        [self.delegate didFinishRoomInput:self]; //kasius knaktus
+        [self.delegate didFinishRoomInput:self room:arr]; //kasius knaktus
         [self.navigationController popViewControllerAnimated:YES];
         
     }
@@ -293,52 +295,52 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)saveData
-{
-    NSString *roomName = ((UITextField*)[self.view viewWithTag:300]).text;
-    //    NSString *outletName = ((UITextField*)[self.view viewWithTag:12]).text;
-    //    NSString *outletOn = ((UITextField*)[self.view viewWithTag:13]).text;
-    //    NSString *outletOff = ((UITextField*)[self.view viewWithTag:14]).text;
-    
-    NSMutableArray *allOutlets = [NSMutableArray array];
-    
-    NSManagedObjectContext *context = [self managedObjectContext];
-    Room *room = [NSEntityDescription
-                  insertNewObjectForEntityForName:@"Room"
-                  inManagedObjectContext:context];
-    [room setValue:roomName forKey:@"name"];
-    room.floor = self.floor; //#bug# >
-    
-    for (NSArray *arr in self.outlets)
-    {
-        Outlet *tOutlet =[NSEntityDescription
-                          insertNewObjectForEntityForName:@"Outlet"
-                          inManagedObjectContext:context];
-        tOutlet.name = [arr objectAtIndex:0];
-        tOutlet.stateOn = NO;
-        tOutlet.room = room;
-        
-        Command *tCommand = [NSEntityDescription
-                             insertNewObjectForEntityForName:@"Command"
-                             inManagedObjectContext:context];
-        tCommand.on = [arr objectAtIndex:1];
-        tCommand.off = [arr objectAtIndex:2];
-        tCommand.outlet = tOutlet;
-        tOutlet.command = tCommand;
-        
-        [allOutlets addObject:tOutlet];
-        
-    }
-    
-    [room.outlets setByAddingObjectsFromArray:allOutlets];
-    
-    NSError *error;
-    if (![context save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    
-    [self.delegate didFinishRoomInput:self]; //kasius knaktus
-    
-}
+//-(void)saveData
+//{
+//    NSString *roomName = ((UITextField*)[self.view viewWithTag:300]).text;
+//    //    NSString *outletName = ((UITextField*)[self.view viewWithTag:12]).text;
+//    //    NSString *outletOn = ((UITextField*)[self.view viewWithTag:13]).text;
+//    //    NSString *outletOff = ((UITextField*)[self.view viewWithTag:14]).text;
+//    
+//    NSMutableArray *allOutlets = [NSMutableArray array];
+//    
+//    NSManagedObjectContext *context = [self managedObjectContext];
+//    Room *room = [NSEntityDescription
+//                  insertNewObjectForEntityForName:@"Room"
+//                  inManagedObjectContext:context];
+//    [room setValue:roomName forKey:@"name"];
+//    room.floor = self.floor; //#bug# >
+//    
+//    for (NSArray *arr in self.outlets)
+//    {
+//        Outlet *tOutlet =[NSEntityDescription
+//                          insertNewObjectForEntityForName:@"Outlet"
+//                          inManagedObjectContext:context];
+//        tOutlet.name = [arr objectAtIndex:0];
+//        tOutlet.stateOn = NO;
+//        tOutlet.room = room;
+//        
+//        Command *tCommand = [NSEntityDescription
+//                             insertNewObjectForEntityForName:@"Command"
+//                             inManagedObjectContext:context];
+//        tCommand.on = [arr objectAtIndex:1];
+//        tCommand.off = [arr objectAtIndex:2];
+//        tCommand.outlet = tOutlet;
+//        tOutlet.command = tCommand;
+//        
+//        [allOutlets addObject:tOutlet];
+//        
+//    }
+//    
+//    [room.outlets setByAddingObjectsFromArray:allOutlets];
+//    
+//    NSError *error;
+//    if (![context save:&error]) {
+//        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+//    }
+//    
+//    //[self.delegate didFinishRoomInput:self room:arr]; //kasius knaktus
+//    
+//}
 
 @end
