@@ -41,7 +41,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(cancelButtonClicked)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Add Room" style:UIBarButtonItemStyleBordered  target:self action:@selector(addRoomButtonClicked)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    //self.navigationItem.rightBarButtonItem.enabled = NO;
     self.sections = [[NSArray alloc] initWithObjects:@"Room", @"Outlets",  nil];
     
     //core data
@@ -111,8 +111,8 @@
     //textField.backgroundColor = [UIColor redColor];
     textField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
     textField.delegate = self;
-    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    textField.tag = indexPath.row + 300; //#task#
+    //[textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
     textField.placeholder = @"Roomname"; // PLACEHLDR_ADD_ROOM
     //[textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     //textField.tag = 11; //#task#
@@ -120,11 +120,13 @@
     
     if(indexPath.section == 0 && indexPath.row == 0)
     {
+        textField.tag = indexPath.row + 300; //#task#
         cell.accessoryType = UITableViewCellAccessoryNone;
         [cell addSubview:textField];
         
     }else if(indexPath.section == 0 && indexPath.row == 1)
     {
+        textField.tag = indexPath.row + 300;
         textField.text = @"Add Outlet";
         textField.enabled = NO;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -250,7 +252,7 @@
 {
     NSLog(@"adding Room");
     NSString *roomName = ((UITextField*)[self.view viewWithTag:300]).text;
-    
+    NSLog(@"Roomnam: %@",roomName);
     //this fuction needs to trigger a delegate method that reloads the listView tableView
     if([roomName isEqualToString:@""] || self.outlets.count == 0)
     {

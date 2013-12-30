@@ -46,7 +46,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(cancelButtonClicked)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered  target:self action:@selector(doneButtonClicked)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    //self.navigationItem.rightBarButtonItem.enabled = NO;
     self.title = @"Add Floor";
     
     //core data
@@ -109,26 +109,26 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    NSLog(@"%@",NSStringFromCGRect(cell.bounds));
-    
+
     UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 600, 44)]; //#task#
-    //textField.backgroundColor = [UIColor redColor];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:19];
     textField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
     textField.delegate = self;
-    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    textField.tag = indexPath.row + 200; //#task#
+    //[textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
 
     textField.placeholder = @"Floorname"; // PLACEHLDR_ADD_ROOM
         
     if(indexPath.section == 0 && indexPath.row == 0)
     {
+        textField.tag = indexPath.row + 200; //#task#
+        NSLog(@"Adding 200tag");
         cell.accessoryType = UITableViewCellAccessoryNone;
         [cell addSubview:textField];
         
     }else if(indexPath.section == 0 && indexPath.row == 1)
     {
+        textField.tag = indexPath.row + 200; //#task#
         textField.text = @"Add Room";
         textField.enabled = NO;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -208,7 +208,8 @@
 -(void)doneButtonClicked
 {
     NSLog(@"adding Floor");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self validateData];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)cancelButtonClicked
@@ -262,5 +263,89 @@
     [self.tableView reloadData];
 }
 
+#pragma mark custom
+
+-(void)validateData
+{
+    NSLog(@"validating data");
+    [self saveData];
+}
+
+-(void)saveData
+{
+    NSLog(@"saving data");
+    NSString *floorName = ((UITextField*)[self.view viewWithTag:200]).text;
+    //    NSString *outletName = ((UITextField*)[self.view viewWithTag:12]).text;
+    //    NSString *outletOn = ((UITextField*)[self.view viewWithTag:13]).text;
+    //    NSString *outletOff = ((UITextField*)[self.view viewWithTag:14]).text;
+    
+    NSMutableArray *allRooms = [NSMutableArray array];
+    NSMutableArray *allOutlets = [NSMutableArray array];
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    Floor *floor = [NSEntityDescription insertNewObjectForEntityForName:@"Floor" inManagedObjectContext:context];
+    [floor setValue:floorName forKey:@"name"];
+    
+    
+    /*
+     roomsArray -> 
+     0: nsstring(roomName)
+     1: nsarray(outlets)
+        -> 1.0: nsarray(oulet)
+            -> 1.0.1: nsstring commandName, 1.0.2: nsstring on, 1.0.3: nsstring off
+     */
+    //serialization for rooms
+    for (NSArray *array in self.rooms)
+    {
+        //extract roomName
+        NSString *roomName = [array objectAtIndex:0];
+        NSLog(@"Roomname: %@",roomName);
+        
+        Room *room = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Room"
+                      inManagedObjectContext:context];
+        room.floor = floor;
+        [room setValue:roomName forKey:@"name"];
+        
+        for (NSArray *arr in [array objectAtIndex:1])
+        {
+            //extract outlets
+            Outlet *tOutlet =[NSEntityDescription
+                              insertNewObjectForEntityForName:@"Outlet"
+                              inManagedObjectContext:context];
+            tOutlet.name = [arr objectAtIndex:0];
+            tOutlet.stateOn = NO;
+            tOutlet.room = room;
+            
+            Command *tCommand = [NSEntityDescription
+                                 insertNewObjectForEntityForName:@"Command"
+                                 inManagedObjectContext:context];
+            tCommand.on = [arr objectAtIndex:1];
+            tCommand.off = [arr objectAtIndex:2];
+            tCommand.outlet = tOutlet;
+            tOutlet.command = tCommand;
+            
+            [allOutlets addObject:tOutlet];
+            
+        }
+        
+        
+        [room.outlets setByAddingObjectsFromArray:allOutlets];
+        [allRooms addObject:room];
+    }
+    
+    [floor.rooms setByAddingObjectsFromArray:allRooms];
+
+   
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    //[self.delegate didFinishRoomInput:self]; //kasius knaktus <--- must be changed to a custom delegate to have the floor/room table update
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
