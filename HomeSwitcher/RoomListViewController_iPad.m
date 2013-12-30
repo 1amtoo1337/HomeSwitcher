@@ -8,6 +8,7 @@
 
 #import "RoomListViewController_iPad.h"
 #import "AddFloorAndRoomViewController_iPad.h"
+#import "SettingsViewController_iPad.h"
 #import "Floor.h"
 #import "Room.h"
 
@@ -107,18 +108,29 @@
 }
 
 
-- (IBAction)showFloorAddPressed:(UIBarButtonItem *)sender
+- (IBAction)addFloorAndRoomButtonPressed:(UIBarButtonItem *)sender
 {
-    AddFloorAndRoomViewController_iPad *vc = [[AddFloorAndRoomViewController_iPad alloc] initWithStyle:UITableViewStyleGrouped];
-    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    //AddFloorAndRoomViewController_iPad *vc = [[AddFloorAndRoomViewController_iPad alloc] initWithStyle:UITableViewStyleGrouped];
     
+    //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    UINavigationController *vc=[[self storyboard] instantiateViewControllerWithIdentifier:@"floorAndRoomAddNavController"];
+        
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    
+    
+}
+
+- (IBAction)displaySettingsButtonPressed:(UIBarButtonItem *)sender
+{
+    SettingsViewController_iPad *vc = [[SettingsViewController_iPad alloc] initWithStyle:UITableViewStyleGrouped];
+
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     nc.modalPresentationStyle = UIModalPresentationFormSheet;
     vc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered  target:self action:@selector(doneButtonClicked)];
-    [vc setTitle:@"Add Floor"];
+    [vc setTitle:@"Settings"];
     [self.navigationController presentViewController:nc animated:YES completion:nil];
-    
-    
 }
 
 -(void)doneButtonClicked

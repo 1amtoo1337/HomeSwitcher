@@ -1,5 +1,5 @@
 //
-//  AddFloorAndRoomViewController_iPad.h
+//  SettingsViewController_iPad.h
 //  HomeSwitcher
 //
 //  Created by Allan Acheampong on 29.12.13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddFloorAndRoomViewController_iPad : UITableViewController<UITextFieldDelegate>
+@interface SettingsViewController_iPad : UITableViewController
 
 @end

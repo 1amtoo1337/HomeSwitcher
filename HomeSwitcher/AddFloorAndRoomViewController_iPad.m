@@ -7,10 +7,16 @@
 //
 
 #import "AddFloorAndRoomViewController_iPad.h"
+#import "InputCell_iPad.h"
 
 @interface AddFloorAndRoomViewController_iPad ()
 
 @property (strong, nonatomic) NSArray *sections;
+@property BOOL textEntered;
+
+@property (strong, nonatomic) NSArray *floor;
+@property (strong, nonatomic) NSMutableArray *rooms;
+@property (strong, nonatomic) NSMutableArray *outlets;
 
 @end
 
@@ -29,13 +35,12 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    NSLog(@"esrdtfzguhj");
-    self.sections = [[NSArray alloc] initWithObjects:@"Floor", @"Room", @"Outlet", nil];
+    self.sections = [[NSArray alloc] initWithObjects:@"Floor", @"Room", nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(cancelButtonClicked)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered  target:self action:@selector(doneButtonClicked)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.title = @"Add Floor";
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +55,7 @@
 {
     return [self.sections objectAtIndex:section];
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -59,76 +65,181 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 2;
+    
+    if (section == 0)
+    {
+        //floor
+        return 2;
+    }
+    else if (section == 1)
+    {
+        //room s
+        return 1;
+    }
+    
+    return 1;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //[textField resignFirstResponder];
+    
+    NSUInteger section = indexPath.section;
+    NSUInteger row = indexPath.row;
+    
+    if(section == 0 && row == 1) NSLog(@"Add");
+}
+
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 &&indexPath.row == 0) return nil;
+    
+    return indexPath;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    NSLog(@"%@",NSStringFromCGRect(cell.bounds));
+    
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 600, 44)]; //#task#
+    //textField.backgroundColor = [UIColor redColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:19];
+    textField.font = [UIFont fontWithName:@"Avenir" size:19]; //#task#
+    textField.delegate = self;
+    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    textField.tag = indexPath.row + 200; //#task#
+
+    textField.placeholder = @"Floorname"; // PLACEHLDR_ADD_ROOM
+        
+    if(indexPath.section == 0 && indexPath.row == 0)
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell addSubview:textField];
+        
+    }else if(indexPath.section == 0 && indexPath.row == 1)
+    {
+        textField.text = @"Add Room";
+        textField.enabled = NO;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        [cell addSubview:textField];
+        
+        UIImageView *plus = [[UIImageView alloc] initWithFrame:CGRectMake(480, 5, 30, 30)];
+        plus.image = [UIImage imageNamed:@"plus_add_green.png"];
+        [cell addSubview:plus];
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+    }else if(indexPath.section == 1)
+    {
+//        cell.textField.text = [[self.outlets objectAtIndex:indexPath.row] objectAtIndex:0];
+//        cell.textField.enabled = NO;
+        cell.textLabel.text = @"some Room";
+
+        
+        
+    }
+
+//    switch(indexPath.section)
+//    {
+//            //Section 0: Floor
+//        case 0:
+//            switch (indexPath.row)
+//        {
+//                case 0:
+//
+//                break;
+//                    
+//                default:
+//                    break;
+//        }
+//            
+//            //Section 1: Room
+//        case 1:
+//            switch (indexPath.row)
+//        {
+//            case 0:
+//                ;
+//                break;
+//                
+//            default:
+//                break;
+//        }
+//            
+//            default:
+//            break;
+//    }
     // Configure the cell...
-    cell.textLabel.text = @"asdf";
+    //cell.textLabel.text = @"asdf";
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)textFieldDidChange:(id)sender
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSString *floorName = ((UITextField*)[self.view viewWithTag:200]).text;
+    
+    if(floorName.length > 0)
+    {
+        NSLog(@"text avlbl");
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.textEntered = YES;
+        
+        
+    }else if(floorName.length == 0)
+    {
+        NSLog(@"no text avlbl");
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.textEntered = NO;
+    }
+    
 }
 
- */
-
-- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender
+-(void)doneButtonClicked
 {
+    NSLog(@"adding Floor");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void)cancelButtonClicked
+{
+    NSLog(@"canceling adding Floor");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - UITextField Delegate
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+
+
 @end

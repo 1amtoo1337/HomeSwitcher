@@ -1,5 +1,5 @@
 //
-//  AddFloorAndRoomViewController_iPad.h
+//  InputCell_iPad.h
 //  HomeSwitcher
 //
 //  Created by Allan Acheampong on 29.12.13.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddFloorAndRoomViewController_iPad : UITableViewController<UITextFieldDelegate>
+@interface InputCell_iPad : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 @end

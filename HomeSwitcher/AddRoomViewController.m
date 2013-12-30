@@ -135,7 +135,7 @@
         cell.textField.tag = 11; //#task#
         [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.textField.placeholder = @"Roomname"; // PLCHLDR_ADD_ROOM
+        cell.textField.placeholder = @"Roomname"; // PLACEHLDR_ADD_ROOM
         
     }else if(indexPath.section == 0 && indexPath.row == 1)
     {

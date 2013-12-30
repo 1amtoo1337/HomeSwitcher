@@ -40,6 +40,10 @@
 		102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC401858CDE60066D814 /* AsyncUdpSocket.m */; };
 		102DEC481858D6AF0066D814 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 102DEC451858D6AF0066D814 /* ProgressHUD.bundle */; };
 		102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC471858D6AF0066D814 /* ProgressHUD.m */; };
+		1034986D1870A5A40016536B /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034986C1870A5A40016536B /* SettingsViewController_iPad.m */; };
+		103498711870AA8C0016536B /* InputCell_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 103498701870AA8C0016536B /* InputCell_iPad.m */; };
+		109C580C187111C1003D1F64 /* AddRoomViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 109C580B187111C1003D1F64 /* AddRoomViewController_iPad.m */; };
+		109C580F187111D6003D1F64 /* AddOutletViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 109C580E187111D6003D1F64 /* AddOutletViewController_iPad.m */; };
 		109E31DE1856C7E900882DE8 /* InputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31DD1856C7E900882DE8 /* InputCell.m */; };
 		109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31E01856DA5400882DE8 /* LightSwitchCell.m */; };
 		109E31E318573A5900882DE8 /* plus_add_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 109E31E218573A5900882DE8 /* plus_add_green.png */; };
@@ -123,6 +127,14 @@
 		102DEC451858D6AF0066D814 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ProgressHUD.bundle; path = ProgressHUD/ProgressHUD/ProgressHUD.bundle; sourceTree = SOURCE_ROOT; };
 		102DEC461858D6AF0066D814 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUD.h; path = ProgressHUD/ProgressHUD/ProgressHUD.h; sourceTree = SOURCE_ROOT; };
 		102DEC471858D6AF0066D814 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUD.m; path = ProgressHUD/ProgressHUD/ProgressHUD.m; sourceTree = SOURCE_ROOT; };
+		1034986B1870A5A40016536B /* SettingsViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController_iPad.h; sourceTree = "<group>"; };
+		1034986C1870A5A40016536B /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
+		1034986F1870AA8C0016536B /* InputCell_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell_iPad.h; sourceTree = "<group>"; };
+		103498701870AA8C0016536B /* InputCell_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell_iPad.m; sourceTree = "<group>"; };
+		109C580A187111C1003D1F64 /* AddRoomViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRoomViewController_iPad.h; sourceTree = "<group>"; };
+		109C580B187111C1003D1F64 /* AddRoomViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRoomViewController_iPad.m; sourceTree = "<group>"; };
+		109C580D187111D6003D1F64 /* AddOutletViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOutletViewController_iPad.h; sourceTree = "<group>"; };
+		109C580E187111D6003D1F64 /* AddOutletViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOutletViewController_iPad.m; sourceTree = "<group>"; };
 		109E31DC1856C7E900882DE8 /* InputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell.h; sourceTree = "<group>"; };
 		109E31DD1856C7E900882DE8 /* InputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell.m; sourceTree = "<group>"; };
 		109E31DF1856DA5400882DE8 /* LightSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightSwitchCell.h; sourceTree = "<group>"; };
@@ -190,6 +202,7 @@
 		100CD499185642EA00995D4B = {
 			isa = PBXGroup;
 			children = (
+				100CD4BF185642EB00995D4B /* HomeSwitcher.xcdatamodeld */,
 				100CD4AD185642EA00995D4B /* HomeSwitcher */,
 				100CD4D6185642EB00995D4B /* HomeSwitcherTests */,
 				100CD4A4185642EA00995D4B /* Frameworks */,
@@ -230,7 +243,6 @@
 				100CD4F218566A0300995D4B /* iPad */,
 				100CD4EE185669B000995D4B /* Boilerplate */,
 				100CD4C8185642EB00995D4B /* Images.xcassets */,
-				100CD4BF185642EB00995D4B /* HomeSwitcher.xcdatamodeld */,
 				10A04B3A186FC8EA0070FE61 /* Command.h */,
 				10A04B3B186FC8EA0070FE61 /* Command.m */,
 				10A04B3D186FC8EB0070FE61 /* Outlet.h */,
@@ -343,9 +355,11 @@
 		100CD4F218566A0300995D4B /* iPad */ = {
 			isa = PBXGroup;
 			children = (
-				10A04B57186FF0BC0070FE61 /* Input */,
-				10A04B4F186FE8660070FE61 /* List */,
 				100CD4BC185642EB00995D4B /* Main_iPad.storyboard */,
+				103498721870AB3B0016536B /* Cells */,
+				10A04B4F186FE8660070FE61 /* List */,
+				10A04B57186FF0BC0070FE61 /* Input */,
+				1034986E1870A5AC0016536B /* Settings */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -408,6 +422,24 @@
 			name = ProgressHud;
 			sourceTree = "<group>";
 		};
+		1034986E1870A5AC0016536B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1034986B1870A5A40016536B /* SettingsViewController_iPad.h */,
+				1034986C1870A5A40016536B /* SettingsViewController_iPad.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		103498721870AB3B0016536B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1034986F1870AA8C0016536B /* InputCell_iPad.h */,
+				103498701870AA8C0016536B /* InputCell_iPad.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		109E31E418573EBB00882DE8 /* List */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +482,10 @@
 			children = (
 				10A04B58186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.h */,
 				10A04B59186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.m */,
+				109C580A187111C1003D1F64 /* AddRoomViewController_iPad.h */,
+				109C580B187111C1003D1F64 /* AddRoomViewController_iPad.m */,
+				109C580D187111D6003D1F64 /* AddOutletViewController_iPad.h */,
+				109C580E187111D6003D1F64 /* AddOutletViewController_iPad.m */,
 			);
 			name = Input;
 			sourceTree = "<group>";
@@ -567,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A04B45186FC8EB0070FE61 /* Room.m in Sources */,
+				109C580F187111D6003D1F64 /* AddOutletViewController_iPad.m in Sources */,
 				102DEBC818575B320066D814 /* OutletInputCell.m in Sources */,
 				10A04B48186FC8EB0070FE61 /* Settings.m in Sources */,
 				100CD4C7185642EB00995D4B /* DetailViewController.m in Sources */,
@@ -583,12 +620,15 @@
 				100CD4B8185642EB00995D4B /* AppDelegate.m in Sources */,
 				109E31DE1856C7E900882DE8 /* InputCell.m in Sources */,
 				100CD4C1185642EB00995D4B /* HomeSwitcher.xcdatamodeld in Sources */,
+				109C580C187111C1003D1F64 /* AddRoomViewController_iPad.m in Sources */,
 				100CD50418567EE600995D4B /* OutletListViewController.m in Sources */,
 				102DEC411858CDE60066D814 /* AsyncSocket.m in Sources */,
 				10A04B4E186FC9610070FE61 /* AddFloorViewController.m in Sources */,
 				102DEC3C1858CDB30066D814 /* GCDAsyncUdpSocket.m in Sources */,
 				100CD4B4185642EA00995D4B /* main.m in Sources */,
 				10E3AE6E185A7771009EF301 /* SevenSwitch.m in Sources */,
+				1034986D1870A5A40016536B /* SettingsViewController_iPad.m in Sources */,
+				103498711870AA8C0016536B /* InputCell_iPad.m in Sources */,
 				10A04B3C186FC8EA0070FE61 /* Command.m in Sources */,
 				10A04B4B186FC8EB0070FE61 /* Floor.m in Sources */,
 				100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */,
@@ -852,7 +892,8 @@
 				100CD4C0185642EB00995D4B /* HomeSwitcher.xcdatamodel */,
 			);
 			currentVersion = 100CD4C0185642EB00995D4B /* HomeSwitcher.xcdatamodel */;
-			path = HomeSwitcher.xcdatamodeld;
+			name = HomeSwitcher.xcdatamodeld;
+			path = HomeSwitcher/HomeSwitcher.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

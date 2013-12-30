@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-- (IBAction)showFloorAddPressed:(UIBarButtonItem *)sender;
+- (IBAction)addFloorAndRoomButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)displaySettingsButtonPressed:(UIBarButtonItem *)sender;
 
 @end
