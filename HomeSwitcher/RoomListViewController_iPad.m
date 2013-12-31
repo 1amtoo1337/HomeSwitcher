@@ -101,6 +101,12 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Sectmmion: '%i' Row: '%i'",indexPath.section, indexPath.row);
+    
+}
+
 -(void)fetchFloorsFromCoreData
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

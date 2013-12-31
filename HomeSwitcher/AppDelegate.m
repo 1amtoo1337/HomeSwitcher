@@ -10,6 +10,15 @@
 #import "TestFlight.h"
 #import "MasterViewController.h"
 
+#import "AMMMultipleDetailManager.h"
+#import "RoomListViewController_iPad.h"
+#import "StandardViewController.h"
+#import "RoomDisplayViewController.h"
+
+@interface AppDelegate()
+@property (strong,nonatomic)AMMMultipleDetailManager * masterDetailManager;
+@end
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -35,6 +44,14 @@
 //        MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
 //        controller.managedObjectContext = self.managedObjectContext;
 //    }
+    
+    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    
+    StandardViewController * detail1 = [splitViewController.viewControllers objectAtIndex:1];
+    RoomDisplayViewController * detail2 = [splitViewController.storyboard instantiateViewControllerWithIdentifier:@"RoomDisplayViewController"];
+    
+    self.masterDetailManager = [[AMMMultipleDetailManager alloc] initWithSplitViewController:splitViewController withDetailRootControllers:[NSArray arrayWithObjects:detail1,detail2, nil]];
+
     return YES;
 }
 							

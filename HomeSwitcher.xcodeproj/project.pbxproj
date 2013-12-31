@@ -42,6 +42,9 @@
 		102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 102DEC471858D6AF0066D814 /* ProgressHUD.m */; };
 		1034986D1870A5A40016536B /* SettingsViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034986C1870A5A40016536B /* SettingsViewController_iPad.m */; };
 		103498711870AA8C0016536B /* InputCell_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 103498701870AA8C0016536B /* InputCell_iPad.m */; };
+		10425BE2187165D900E5D8EB /* RoomDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10425BE1187165D900E5D8EB /* RoomDisplayViewController.m */; };
+		10425C7D1872726B00E5D8EB /* AMMMultipleDetailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10425C7C1872726B00E5D8EB /* AMMMultipleDetailManager.m */; };
+		10425C811872736900E5D8EB /* StandardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10425C801872736900E5D8EB /* StandardViewController.m */; };
 		109C580C187111C1003D1F64 /* AddRoomViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 109C580B187111C1003D1F64 /* AddRoomViewController_iPad.m */; };
 		109C580F187111D6003D1F64 /* AddOutletViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 109C580E187111D6003D1F64 /* AddOutletViewController_iPad.m */; };
 		109E31DE1856C7E900882DE8 /* InputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E31DD1856C7E900882DE8 /* InputCell.m */; };
@@ -62,7 +65,6 @@
 		10E3AE71185A7BC5009EF301 /* blitz_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */; };
 		10E3AE72185A7BC5009EF301 /* blitz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE70185A7BC5009EF301 /* blitz@2x.png */; };
 		10E3AE74185A8179009EF301 /* chevron@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E3AE73185A8179009EF301 /* chevron@2x.png */; };
-		10E3AEE8185B3BDC009EF301 /* CRGradientNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,12 @@
 		1034986C1870A5A40016536B /* SettingsViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController_iPad.m; sourceTree = "<group>"; };
 		1034986F1870AA8C0016536B /* InputCell_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell_iPad.h; sourceTree = "<group>"; };
 		103498701870AA8C0016536B /* InputCell_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell_iPad.m; sourceTree = "<group>"; };
+		10425BE0187165D900E5D8EB /* RoomDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomDisplayViewController.h; sourceTree = "<group>"; };
+		10425BE1187165D900E5D8EB /* RoomDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomDisplayViewController.m; sourceTree = "<group>"; };
+		10425C7B1872726B00E5D8EB /* AMMMultipleDetailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMMMultipleDetailManager.h; sourceTree = "<group>"; };
+		10425C7C1872726B00E5D8EB /* AMMMultipleDetailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMMMultipleDetailManager.m; sourceTree = "<group>"; };
+		10425C7F1872736900E5D8EB /* StandardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardViewController.h; sourceTree = "<group>"; };
+		10425C801872736900E5D8EB /* StandardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardViewController.m; sourceTree = "<group>"; };
 		109C580A187111C1003D1F64 /* AddRoomViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRoomViewController_iPad.h; sourceTree = "<group>"; };
 		109C580B187111C1003D1F64 /* AddRoomViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRoomViewController_iPad.m; sourceTree = "<group>"; };
 		109C580D187111D6003D1F64 /* AddOutletViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOutletViewController_iPad.h; sourceTree = "<group>"; };
@@ -167,8 +175,6 @@
 		10E3AE6F185A7BC5009EF301 /* blitz_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz_off@2x.png"; path = "Images/blitz_off@2x.png"; sourceTree = "<group>"; };
 		10E3AE70185A7BC5009EF301 /* blitz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blitz@2x.png"; path = "Images/blitz@2x.png"; sourceTree = "<group>"; };
 		10E3AE73185A8179009EF301 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevron@2x.png"; path = "Images/chevron@2x.png"; sourceTree = "<group>"; };
-		10E3AEE6185B3BDC009EF301 /* CRGradientNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGradientNavigationBar.h; sourceTree = "<group>"; };
-		10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGradientNavigationBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,10 +321,8 @@
 		100CD4EF185669DB00995D4B /* Imported Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				10E3AEE6185B3BDC009EF301 /* CRGradientNavigationBar.h */,
-				10E3AEE7185B3BDC009EF301 /* CRGradientNavigationBar.m */,
-				10E3AE6C185A7771009EF301 /* SevenSwitch.h */,
-				10E3AE6D185A7771009EF301 /* SevenSwitch.m */,
+				10425C7E1872727800E5D8EB /* AMMMultipleDetailManager */,
+				10425C7A1872725600E5D8EB /* SevenSwitch */,
 				102DEC4A1858D6B60066D814 /* ProgressHud */,
 				100CD4F0185669E600995D4B /* ASyncUDPSocket */,
 				100CD4E6185659DE00995D4B /* TestFlight */,
@@ -440,6 +444,24 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		10425C7A1872725600E5D8EB /* SevenSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				10E3AE6C185A7771009EF301 /* SevenSwitch.h */,
+				10E3AE6D185A7771009EF301 /* SevenSwitch.m */,
+			);
+			name = SevenSwitch;
+			sourceTree = "<group>";
+		};
+		10425C7E1872727800E5D8EB /* AMMMultipleDetailManager */ = {
+			isa = PBXGroup;
+			children = (
+				10425C7B1872726B00E5D8EB /* AMMMultipleDetailManager.h */,
+				10425C7C1872726B00E5D8EB /* AMMMultipleDetailManager.m */,
+			);
+			name = AMMMultipleDetailManager;
+			sourceTree = "<group>";
+		};
 		109E31E418573EBB00882DE8 /* List */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +495,10 @@
 			children = (
 				10A04B53186FE8CF0070FE61 /* RoomListViewController_iPad.h */,
 				10A04B54186FE8CF0070FE61 /* RoomListViewController_iPad.m */,
+				10425BE0187165D900E5D8EB /* RoomDisplayViewController.h */,
+				10425BE1187165D900E5D8EB /* RoomDisplayViewController.m */,
+				10425C7F1872736900E5D8EB /* StandardViewController.h */,
+				10425C801872736900E5D8EB /* StandardViewController.m */,
 			);
 			name = List;
 			sourceTree = "<group>";
@@ -609,12 +635,15 @@
 				100CD4C7185642EB00995D4B /* DetailViewController.m in Sources */,
 				102DEC0F1858B9480066D814 /* SettingsViewController.m in Sources */,
 				100CD4C4185642EB00995D4B /* MasterViewController.m in Sources */,
+				10425C7D1872726B00E5D8EB /* AMMMultipleDetailManager.m in Sources */,
 				100CD4F518566A8400995D4B /* RoomListViewController.m in Sources */,
 				102DEC491858D6AF0066D814 /* ProgressHUD.m in Sources */,
 				10A04B39186FC5A00070FE61 /* FloorListViewController.m in Sources */,
 				10A04B55186FE8CF0070FE61 /* RoomListViewController_iPad.m in Sources */,
 				10A04B5A186FF0F90070FE61 /* AddFloorAndRoomViewController_iPad.m in Sources */,
+				10425BE2187165D900E5D8EB /* RoomDisplayViewController.m in Sources */,
 				102DEC421858CDE60066D814 /* AsyncUdpSocket.m in Sources */,
+				10425C811872736900E5D8EB /* StandardViewController.m in Sources */,
 				10A04B42186FC8EB0070FE61 /* Lightstrip.m in Sources */,
 				102DEC3B1858CDB30066D814 /* GCDAsyncSocket.m in Sources */,
 				100CD4B8185642EB00995D4B /* AppDelegate.m in Sources */,
@@ -634,7 +663,6 @@
 				100CD4FE1856703000995D4B /* AddRoomViewController.m in Sources */,
 				10A04B3F186FC8EB0070FE61 /* Outlet.m in Sources */,
 				109E31E11856DA5400882DE8 /* LightSwitchCell.m in Sources */,
-				10E3AEE8185B3BDC009EF301 /* CRGradientNavigationBar.m in Sources */,
 				109E31E818573EFD00882DE8 /* AddOutletViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
