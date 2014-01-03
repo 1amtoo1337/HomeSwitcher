@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RoomDisplayViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface RoomDisplayViewController : UIViewController<NSFetchedResultsControllerDelegate ,UITableViewDelegate, UINavigationControllerDelegate, UITableViewDataSource, UIImagePickerControllerDelegate>
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *pictureAddButton;
 
+- (IBAction)pictureAddButtonPressed:(UIButton *)sender;
 @end
