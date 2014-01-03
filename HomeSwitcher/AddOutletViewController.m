@@ -43,6 +43,22 @@
     [workaroundImageView addSubview:navigationImage];
     self.navigationItem.titleView = workaroundImageView;
     
+    self.keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -105,7 +121,17 @@
     [cell.outletTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     cell.outletTextField.placeholder = [self.cellText objectAtIndex:indexPath.row];
     
-    return cell;
+    if (indexPath.row == 0)
+    {
+        cell.outletTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    }else
+    {
+        //commands don't need to be capitalized
+        cell.outletTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+
+    }
+    
+       return cell;
 }
 
 -(void)textFieldDidChange:(id)sender
@@ -134,6 +160,14 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
 
+    [self createInputAccessoryView];
+    
+    // Now add the view as an input accessory view to the selected textfield.
+    [textField setInputAccessoryView:self.inputAccView];
+    
+    // Set the active field. We' ll need that if we want to move properly
+    // between our textfields.
+    self.txtActiveField = textField;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -164,7 +198,7 @@
     } else if (buttonIndex == 1)
     {
         NSLog(@"ok");
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
 
     }
 }
@@ -178,7 +212,6 @@
     }else if(self.textEntered == NO)
     {
         [self.navigationController popViewControllerAnimated:YES];
-         //popToRootViewControllerAnimated:YES];
     }
 }
 
@@ -233,6 +266,98 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
+}
+
+#pragma mark Custom Keyboard Toolbar 
+-(void)createInputAccessoryView{
+    
+    self.inputAccView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 310.0, 40.0)];
+    [self.inputAccView setBackgroundColor:[UIColor colorWithRed:217/255.0 green:220/255.0 blue:226/255.0 alpha:1]];
+    [self.inputAccView setAlpha: 0.8];
+    
+    self.btnPrev = [UIButton buttonWithType: UIButtonTypeCustom];
+    [self.btnPrev setFrame: CGRectMake(0.0, 0.0, 60.0, 40.0)];
+    [self.btnPrev setTitle: @"<" forState: UIControlStateNormal];
+    [self.btnPrev setBackgroundColor:[UIColor colorWithRed:217/255.0 green:220/255.0 blue:226/255.0 alpha:1]];
+    
+    [self.btnPrev addTarget: self action: @selector(gotoPrevTextfield) forControlEvents: UIControlEventTouchUpInside];
+    
+    // Do the same for the two buttons left.
+    self.btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.btnNext setFrame:CGRectMake(65.0f, 0.0f, 60.0f, 40.0f)];
+    [self.btnNext setTitle:@">" forState:UIControlStateNormal];
+    [self.btnNext setBackgroundColor:[UIColor colorWithRed:217/255.0 green:220/255.0 blue:226/255.0 alpha:1]];
+    [self.btnNext addTarget:self action:@selector(gotoNextTextfield) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.btnDone = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.btnDone setFrame:CGRectMake(240.0, 0.0f, 80.0f, 40.0f)];
+    [self.btnDone setTitle:@"Done" forState:UIControlStateNormal];
+    [self.btnDone setBackgroundColor:[UIColor colorWithRed:217/255.0 green:220/255.0 blue:226/255.0 alpha:1]];
+    [self.btnDone setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.btnDone addTarget:self action:@selector(doneTyping) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.inputAccView addSubview:self.btnPrev];
+    [self.inputAccView addSubview:self.btnNext];
+    //[self.inputAccView addSubview:self.btnDone];
+}
+
+-(void)gotoPrevTextfield{
+    
+    UITextField *txtField1 = ((UITextField*)[self.view viewWithTag:100]);
+    UITextField *txtField2 = ((UITextField*)[self.view viewWithTag:101]);
+    UITextField *txtField3 = ((UITextField*)[self.view viewWithTag:102]);
+    
+    if (self.txtActiveField == txtField1)
+    {
+        self.btnPrev.enabled = NO;
+        
+        return;
+    }
+    else if(self.txtActiveField == txtField2)
+    {
+
+        [txtField1 becomeFirstResponder];
+        
+    }else if(self.txtActiveField == txtField3)
+    {
+
+        self.btnNext.enabled = YES;
+        [txtField2 becomeFirstResponder];
+        
+        return;
+        
+    }
+}
+
+-(void)gotoNextTextfield
+{
+    UITextField *txtField1 = ((UITextField*)[self.view viewWithTag:100]);
+    UITextField *txtField2 = ((UITextField*)[self.view viewWithTag:101]);
+    UITextField *txtField3 = ((UITextField*)[self.view viewWithTag:102]);
+    
+    if (self.txtActiveField == txtField1)
+    {
+        [txtField2 becomeFirstResponder];
+    }
+    else if(self.txtActiveField == txtField2)
+    {
+        [txtField3 becomeFirstResponder];
+        
+    }else if(self.txtActiveField == txtField3)
+    {
+ 
+        self.btnNext.enabled = NO;
+        
+        return;
+        
+    }
+}
+
+-(void)doneTyping
+{
+
+    [self.txtActiveField resignFirstResponder];
+    
 }
 
 @end

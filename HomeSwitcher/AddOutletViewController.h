@@ -20,7 +20,13 @@
 @interface AddOutletViewController : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic, weak) id<AddOutletDelegate>delegate;
-
+//44,320
+@property (nonatomic, retain) UIButton *btnDone;
+@property (nonatomic, retain) UIButton *btnNext;
+@property (nonatomic, retain) UIButton *btnPrev;
+@property (nonatomic, retain) UIView *inputAccView;
+@property (nonatomic, retain) UITextField *txtActiveField;
+@property (nonatomic, strong) UIView *keyboardToolbar;
 @property (nonatomic, strong) NSArray *importOutlet;
 
 - (IBAction)cancelOutletEntry:(UIBarButtonItem *)sender;

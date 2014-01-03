@@ -45,13 +45,18 @@
 //        controller.managedObjectContext = self.managedObjectContext;
 //    }
     
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        
+    
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     
     StandardViewController * detail1 = [splitViewController.viewControllers objectAtIndex:1];
     RoomDisplayViewController * detail2 = [splitViewController.storyboard instantiateViewControllerWithIdentifier:@"RoomDisplayViewController"];
     
     self.masterDetailManager = [[AMMMultipleDetailManager alloc] initWithSplitViewController:splitViewController withDetailRootControllers:[NSArray arrayWithObjects:detail1,detail2, nil]];
-
+    }
+    
     return YES;
 }
 							
